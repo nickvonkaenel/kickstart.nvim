@@ -1,0 +1,5 @@
+return {
+  extension = {
+    dat = 'lua',
+  },
+}

@@ -833,8 +833,11 @@ require('lazy').setup({
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
     'olimorris/onedarkpro.nvim',
     opts = {
+      colors = {
+        bg = '#121212',
+      },
       options = {
-        transparency = true,
+        transparency = false,
       },
     },
     lazy = false,
@@ -843,7 +846,7 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'onedark_dark'
+      vim.cmd.colorscheme 'onedark'
 
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
@@ -973,6 +976,23 @@ vim.filetype.add {
 vim.api.nvim_set_keymap('n', '<leader>cs', ':Telescope colorscheme<CR>', { noremap = true, silent = true })
 
 require('Comment').setup { toggler = { line = '<C-/>' } }
+
+-- Move selected lines down
+vim.api.nvim_set_keymap('v', 'J', ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
+
+-- Move selected lines up
+vim.api.nvim_set_keymap('v', 'K', ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
+
+-- Set tab width to 4 spaces
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+
+-- Optional: Make backspace key work as expected
+vim.opt.softtabstop = 4
+vim.opt.smarttab = true
+
+require('plenary.filetype').add_file 'foo'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
