@@ -901,6 +901,10 @@ require('lazy').setup({
       },
       indent = { enable = true, disable = { 'ruby' } },
     },
+    {
+      'numToStr/Comment.nvim',
+      opts = {},
+    },
     -- There are additional nvim-treesitter modules that you can use to interact
     -- with nvim-treesitter. You should go explore a few and see what interests you:
     --
@@ -960,6 +964,8 @@ vim.filetype.add {
 }
 
 vim.api.nvim_set_keymap('n', '<leader>cs', ':Telescope colorscheme<CR>', { noremap = true, silent = true })
+
+require('Comment').setup { toggler = { line = '<C-/>' } }
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
