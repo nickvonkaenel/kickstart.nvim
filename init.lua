@@ -915,6 +915,25 @@ require('lazy').setup({
       'numToStr/Comment.nvim',
       opts = {},
     },
+    {
+      'kdheepak/lazygit.nvim',
+      cmd = {
+        'LazyGit',
+        'LazyGitConfig',
+        'LazyGitCurrentFile',
+        'LazyGitFilter',
+        'LazyGitFilterCurrentFile',
+      },
+      -- optional for floating window border decoration
+      dependencies = {
+        'nvim-lua/plenary.nvim',
+      },
+      -- setting the keybinding for LazyGit with 'keys' is recommended in
+      -- order to load the plugin when the command is run for the first time
+      keys = {
+        { '<leader>lg', '<cmd>LazyGit<cr>', desc = 'LazyGit' },
+      },
+    },
     -- There are additional nvim-treesitter modules that you can use to interact
     -- with nvim-treesitter. You should go explore a few and see what interests you:
     --
