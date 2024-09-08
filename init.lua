@@ -383,6 +383,9 @@ require('lazy').setup({
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
         --
+        defaults = {
+          file_ignore_patterns = { 'ICONS/' },
+        },
         -- defaults = {
         --   mappings = {
         --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
@@ -627,6 +630,17 @@ require('lazy').setup({
             Lua = {
               completion = {
                 callSnippet = 'Replace',
+              },
+              workspace = {
+                maxPreload = 20000, -- default is 5000, just adding this just in case it is the issue
+                library = {
+                  '/Users/nvk/.cursor/extensions/antoinebalaine.reascript-docs-0.1.12/resources/Sexan_reaper_defs.lua',
+                  '/Users/nvk/.cursor/extensions/antoinebalaine.reascript-docs-0.1.12/resources/imgui_defs_0.9.lua',
+                  '/Users/nvk/.cursor/extensions/antoinebalaine.reascript-docs-0.1.12/resources/reawwise_defs.lua',
+                },
+              },
+              runtime = {
+                version = 'Lua 5.4',
               },
               -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
               -- diagnostics = { disable = { 'missing-fields' } },
