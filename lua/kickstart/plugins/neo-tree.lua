@@ -14,8 +14,36 @@ return {
     { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
   },
   opts = {
+    enable_cursor_hijack = true, -- If enabled neotree will keep the cursor on the first letter of the filename when moving in the tree.
+    name = {
+      highlight_opened_files = true,
+    },
+    file_size = {
+      enabled = true,
+      required_width = 84, -- min width of window required to show this column
+    },
+    type = {
+      enabled = true,
+      required_width = 130, -- min width of window required to show this column
+    },
+    last_modified = {
+      enabled = true,
+      required_width = 108, -- min width of window required to show this column
+    },
+    created = {
+      enabled = false,
+      required_width = 140, -- min width of window required to show this column
+    },
     filesystem = {
+      hijack_netrw_behavior = 'open_current',
       window = {
+        position = 'float',
+        popup = {
+          size = {
+            width = '80%',
+            height = '80%',
+          },
+        },
         mappings = {
           ['\\'] = 'close_window',
         },

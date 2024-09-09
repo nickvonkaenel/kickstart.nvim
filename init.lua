@@ -632,7 +632,7 @@ require('lazy').setup({
                 callSnippet = 'Replace',
               },
               workspace = {
-                maxPreload = 20000, -- default is 5000, just adding this just in case it is the issue
+                maxPreload = 5000, -- default is 5000
                 library = {
                   '/Users/nvk/.cursor/extensions/antoinebalaine.reascript-docs-0.1.12/resources/Sexan_reaper_defs.lua',
                   '/Users/nvk/.cursor/extensions/antoinebalaine.reascript-docs-0.1.12/resources/imgui_defs_0.9.lua',
@@ -773,6 +773,32 @@ require('lazy').setup({
         },
         completion = { completeopt = 'menu,menuone,noinsert' },
 
+        -- sorting = {
+        --   comparators = {
+        --     function(entry1, entry2)
+        --       return entry1.completion_item.label:lower() < entry2.completion_item.label:lower()
+        --     end,
+        --     cmp.config.compare.offset,
+        --     cmp.config.compare.exact,
+        --     cmp.config.compare.score,
+        --     cmp.config.compare.recently_used,
+        --     cmp.config.compare.locality,
+        --     cmp.config.compare.kind,
+        --     cmp.config.compare.sort_text,
+        --     cmp.config.compare.length,
+        --     cmp.config.compare.order,
+        --   },
+        --   priority_weight = 2,
+        -- },
+
+        -- matching = {
+        -- disallow_fuzzy_matching = false,
+        --   disallow_fullfuzzy_matching = false,
+        --   disallow_partial_fuzzy_matching = false,
+        --   disallow_partial_matching = false,
+        --   disallow_prefix_unmatching = false,
+        --   disallow_symbol_nonprefix_matching = false,
+        -- },
         -- For an understanding of why these mappings were
         -- chosen, you will need to read `:help ins-completion`
         --
@@ -794,7 +820,7 @@ require('lazy').setup({
 
           -- If you prefer more traditional completion keymaps,
           -- you can uncomment the following lines
-          ['<Tab>'] = cmp.mapping.confirm { select = true },
+          -- ['<Tab>'] = cmp.mapping.confirm { select = true },
           -- ['<CR>'] = cmp.mapping.confirm { select = true },
           -- ['<Tab>'] = cmp.mapping.select_next_item(),
           -- ['<S-Tab>'] = cmp.mapping.select_prev_item(),
@@ -925,29 +951,6 @@ require('lazy').setup({
       },
       indent = { enable = true, disable = { 'ruby' } },
     },
-    {
-      'numToStr/Comment.nvim',
-      opts = {},
-    },
-    {
-      'kdheepak/lazygit.nvim',
-      cmd = {
-        'LazyGit',
-        'LazyGitConfig',
-        'LazyGitCurrentFile',
-        'LazyGitFilter',
-        'LazyGitFilterCurrentFile',
-      },
-      -- optional for floating window border decoration
-      dependencies = {
-        'nvim-lua/plenary.nvim',
-      },
-      -- setting the keybinding for LazyGit with 'keys' is recommended in
-      -- order to load the plugin when the command is run for the first time
-      keys = {
-        { '<leader>lg', '<cmd>LazyGit<cr>', desc = 'LazyGit' },
-      },
-    },
     -- There are additional nvim-treesitter modules that you can use to interact
     -- with nvim-treesitter. You should go explore a few and see what interests you:
     --
@@ -966,10 +969,10 @@ require('lazy').setup({
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
   -- require 'kickstart.plugins.debug',
-  -- require 'kickstart.plugins.indent_line',
-  -- require 'kickstart.plugins.lint',
-  -- require 'kickstart.plugins.autopairs',
-  -- require 'kickstart.plugins.neo-tree',
+  require 'kickstart.plugins.indent_line',
+  require 'kickstart.plugins.lint',
+  require 'kickstart.plugins.autopairs',
+  require 'kickstart.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
@@ -977,7 +980,7 @@ require('lazy').setup({
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
@@ -1007,8 +1010,6 @@ vim.filetype.add {
 }
 
 vim.api.nvim_set_keymap('n', '<leader>cs', ':Telescope colorscheme<CR>', { noremap = true, silent = true })
-
-require('Comment').setup { toggler = { line = '<C-/>' } }
 
 -- Move selected lines down
 vim.api.nvim_set_keymap('v', 'J', ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
