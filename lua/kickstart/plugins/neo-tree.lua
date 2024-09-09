@@ -35,12 +35,15 @@ return {
       required_width = 140, -- min width of window required to show this column
     },
     filesystem = {
+      filtered_items = {
+        never_show = { '.git', 'node_modules', '__pycache__', '.DS_Store' },
+      },
       hijack_netrw_behavior = 'open_current',
       window = {
         position = 'float',
         popup = {
           size = {
-            width = '80%',
+            width = '50%',
             height = '80%',
           },
         },
