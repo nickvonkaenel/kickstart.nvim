@@ -384,7 +384,7 @@ require('lazy').setup({
         --  All the info you're looking for is in `:help telescope.setup()`
         --
         defaults = {
-          file_ignore_patterns = { 'ICONS/' },
+          file_ignore_patterns = { 'ICONS/', '.git/', 'ICONS\\', '.git\\' },
         },
         -- defaults = {
         --   mappings = {
@@ -647,7 +647,7 @@ require('lazy').setup({
             },
             files = {
               associations = {
-                ["*.dat"] = "lua",
+                ['*.dat'] = 'lua',
               },
             },
           },
@@ -883,6 +883,8 @@ require('lazy').setup({
       },
       options = {
         transparency = false,
+        lualine_transparency = false,
+        cursorline = false,
       },
     },
     lazy = false,
@@ -1041,6 +1043,17 @@ vim.diagnostic.config {
 }
 
 vim.api.nvim_set_keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true })
+
+-- Toggle transparency
+vim.keymap.set('n', '<leader>tt', function()
+  local theme = require 'onedarkpro.config'
+  theme.config.options.transparency = not theme.config.options.transparency
+  require('onedarkpro').setup(theme.config.options)
+  vim.cmd.colorscheme 'onedark'
+end)
+
+-- Make sure cursorline is off
+vim.o.cursorline = false
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
