@@ -893,7 +893,7 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'onedark'
+      vim.cmd.colorscheme 'onedark_dark'
 
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
@@ -1049,7 +1049,7 @@ vim.keymap.set('n', '<leader>tt', function()
   local theme = require 'onedarkpro.config'
   theme.config.options.transparency = not theme.config.options.transparency
   require('onedarkpro').setup(theme.config.options)
-  vim.cmd.colorscheme 'onedark'
+  vim.cmd.colorscheme 'onedark_dark'
 end)
 
 -- Make sure cursorline is off
