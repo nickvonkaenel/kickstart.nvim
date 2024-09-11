@@ -226,6 +226,10 @@ vim.opt.rtp:prepend(lazypath)
 --
 --  To update plugins you can run
 --    :Lazy update
+
+-- Alternatively, if you want to lazy load them
+-- require('luasnip.loaders.from_vscode').lazy_load { paths = './snippets/lua/reascript-api-shorthand.code-snippets' }
+
 --
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
@@ -637,6 +641,9 @@ require('lazy').setup({
                   '/Users/nvk/.cursor/extensions/antoinebalaine.reascript-docs-0.1.12/resources/Sexan_reaper_defs.lua',
                   '/Users/nvk/.cursor/extensions/antoinebalaine.reascript-docs-0.1.12/resources/imgui_defs_0.9.lua',
                   '/Users/nvk/.cursor/extensions/antoinebalaine.reascript-docs-0.1.12/resources/reawwise_defs.lua',
+                  'C:\\Users\\nickv\\.cursor\\extensions\\antoinebalaine.reascript-docs-0.1.12\\resources\\Sexan_reaper_defs.lua',
+                  'C:\\Users\\nickv\\.cursor\\extensions\\antoinebalaine.reascript-docs-0.1.12\\resources\\imgui_defs_0.9.lua',
+                  'C:\\Users\\nickv\\.cursor\\extensions\\antoinebalaine.reascript-docs-0.1.12\\resources\\reawwise_defs.lua',
                 },
               },
               runtime = {
@@ -752,6 +759,7 @@ require('lazy').setup({
             'rafamadriz/friendly-snippets',
             config = function()
               require('luasnip.loaders.from_vscode').lazy_load()
+              require('luasnip.loaders.from_vscode').lazy_load { paths = vim.fn.stdpath 'config' .. '/snippets/' }
             end,
           },
         },
@@ -1054,6 +1062,9 @@ end)
 
 -- Make sure cursorline is off
 vim.o.cursorline = false
+
+-- Can uncomment to make comments italic
+-- vim.cmd [[highlight Comment cterm=italic gui=italic]]
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
