@@ -389,12 +389,18 @@ require('lazy').setup({
         --
         defaults = {
           file_ignore_patterns = { 'ICONS/', '.git/', 'ICONS\\', '.git\\' },
+          mappings = {
+            i = {
+              ['<escape>'] = require('telescope.actions').close,
+              ['<C-j>'] = require('telescope.actions').move_selection_next,
+              ['<C-k>'] = require('telescope.actions').move_selection_previous,
+              ['<C-u>'] = false,
+              ['<C-f>'] = require('telescope.actions').preview_scrolling_up,
+              ['<C-c>'] = require('telescope.actions').close,
+              ['<C-l>'] = require('telescope.actions').delete_buffer,
+            },
+          },
         },
-        -- defaults = {
-        --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-        --   },
-        -- },
         -- pickers = {}
         extensions = {
           ['ui-select'] = {
