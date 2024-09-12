@@ -1064,7 +1064,7 @@ end)
 vim.o.cursorline = false
 
 -- Can uncomment to make comments italic
--- vim.cmd [[highlight Comment cterm=italic gui=italic]]
+vim.cmd [[highlight Comment cterm=italic gui=italic]]
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
