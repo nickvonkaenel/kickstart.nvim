@@ -1051,5 +1051,19 @@ vim.o.cursorline = false
 -- Can uncomment to make comments italic
 vim.cmd [[highlight Comment cterm=italic gui=italic]]
 
+-- Fix for shell on Windows. Source: https://vi.stackexchange.com/questions/22869/how-can-neovim-on-windows-be-configured-to-use-gitbash-as-the-shell-without-brea
+-- Lazygit was not working without this fix
+if vim.fn.has 'win32' == 1 then
+  vim.o.shell = 'bash.exe'
+  vim.o.shellcmdflag = '-c'
+  vim.o.shellredir = '>%s 2>&1'
+  vim.o.shellquote = ''
+  vim.o.shellxescape = ''
+  -- vim.o.shelltemp = false  -- Uncomment if needed
+  vim.o.shellxquote = ''
+  vim.o.shellpipe = '2>&1| tee'
+  vim.env.TMP = '/tmp' -- Sets the TMP environment variable
+end
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
