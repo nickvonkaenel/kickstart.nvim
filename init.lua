@@ -327,6 +327,7 @@ require('lazy').setup({
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
         { '<leader>l', group = '[L]azygit' },
+        { '<leader>u', group = '[U]ndo' },
       },
     },
   },
@@ -1046,7 +1047,7 @@ vim.keymap.set('n', '<leader>tt', function()
   theme.config.options.transparency = not theme.config.options.transparency
   require('onedarkpro').setup(theme.config.options)
   vim.cmd.colorscheme 'onedark_dark'
-end)
+end, { desc = '[T]oggle [T]ransparency' })
 
 -- Make sure cursorline is off
 vim.o.cursorline = false
