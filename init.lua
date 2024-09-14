@@ -328,6 +328,7 @@ require('lazy').setup({
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
         { '<leader>l', group = '[L]azygit' },
         { '<leader>u', group = '[U]ndo' },
+        { '<leader>e', group = '[E]xplore' },
       },
     },
   },

@@ -1,6 +1,10 @@
 -- Neo-tree is a Neovim plugin to browse the file system
 -- https://github.com/nvim-neo-tree/neo-tree.nvim
 
+local is_windows = vim.fn.has 'win32' == 1
+local nvk_path = is_windows and 't:/REAPER/Scripts/nvk-ReaScripts' or '/Applications/REAPER/Scripts/nvk-ReaScripts'
+local nvim_path = is_windows and '~/AppData/Local/nvim' or '~/.config/nvim'
+
 return {
   'nvim-neo-tree/neo-tree.nvim',
   version = '*',
@@ -11,7 +15,13 @@ return {
   },
   cmd = 'Neotree',
   keys = {
-    { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
+    { '\\', ':Neotree reveal<CR>:set relativenumber!<CR>', desc = '[E]xplore Tre[e]', silent = true },
+    { '<leader>ee', ':Neotree reveal<CR>:set relativenumber!<CR>', desc = '[E]xplore Tre[e]', silent = true },
+    { '<leader>er', ':Neotree reveal reveal_force_cwd<CR>:set relativenumber!<CR>', desc = '[E]xplore Fo[R]ce cwd', silent = true },
+    { '<leader>en', ':Neotree reveal ' .. nvk_path .. '<CR>:set relativenumber!<CR>', desc = '[E]xplore [N]vk-ReaScripts', silent = true },
+    { '<leader>ev', ':Neotree reveal ' .. nvim_path .. '<CR>:set relativenumber!<CR>', desc = '[E]xplore n[V]im config', silent = true },
+    { '<leader>eo', ':Neotree float buffers<CR>', desc = '[E]xplore [O]pen files', silent = true },
+    { '<leader>eg', ':Neotree float git_status<CR>', desc = '[E]xplore [G]it status', silent = true },
   },
   opts = {
     enable_cursor_hijack = true, -- If enabled neotree will keep the cursor on the first letter of the filename when moving in the tree.
