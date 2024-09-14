@@ -5,6 +5,21 @@ local is_windows = vim.fn.has 'win32' == 1
 local nvk_path = is_windows and 't:/REAPER/Scripts/nvk-ReaScripts' or '/Applications/REAPER/Scripts/nvk-ReaScripts'
 local nvim_path = is_windows and '~/AppData/Local/nvim' or '~/.config/nvim'
 
+vim.api.nvim_create_user_command('Nvk', function()
+  -- Execute Neotree reveal
+  vim.cmd('Neotree reveal ' .. nvk_path)
+  -- Toggle relative numbers separately
+  vim.cmd 'set relativenumber!'
+end, {})
+
+-- Create a command to open nvim config
+vim.api.nvim_create_user_command('Nvim', function()
+  -- Execute Neotree reveal
+  vim.cmd('Neotree reveal ' .. nvim_path)
+  -- Toggle relative numbers separately
+  vim.cmd 'set relativenumber!'
+end, {})
+
 return {
   'nvim-neo-tree/neo-tree.nvim',
   version = '*',
