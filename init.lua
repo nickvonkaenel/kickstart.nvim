@@ -323,8 +323,8 @@ require('lazy').setup({
         { '<leader>d', group = '[D]ocument' },
         { '<leader>r', group = '[R]ename' },
         { '<leader>s', group = '[S]earch' },
-        { '<leader>w', group = '[W]orkspace' },
-        { '<leader>t', group = '[T]oggle' },
+        { '<leader>w', group = '[W]orkspace/Window' },
+        { '<leader>t', group = '[T]ab' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
         { '<leader>l', group = '[L]azygit' },
         { '<leader>u', group = '[U]ndo' },
@@ -1043,12 +1043,12 @@ vim.diagnostic.config {
 vim.api.nvim_set_keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true })
 
 -- Toggle transparency
-vim.keymap.set('n', '<leader>tt', function()
+vim.keymap.set('n', '<leader>wt', function()
   local theme = require 'onedarkpro.config'
   theme.config.options.transparency = not theme.config.options.transparency
   require('onedarkpro').setup(theme.config.options)
   vim.cmd.colorscheme 'onedark_dark'
-end, { desc = '[T]oggle [T]ransparency' })
+end, { desc = 'Toggle [T]ransparency' })
 
 -- Make sure cursorline is off
 vim.o.cursorline = false
@@ -1070,5 +1070,22 @@ if vim.fn.has 'win32' == 1 then
   vim.env.TMP = '/tmp' -- Sets the TMP environment variable
 end
 
+vim.api.nvim_set_keymap('i', 'jk', '<ESC>', { noremap = true, silent = true, desc = 'Exit insert mode with jk' })
+
+-- increment/decrement numbers
+vim.keymap.set('n', '<leader>+', '<C-a>', { desc = 'Increment number' }) -- increment
+vim.keymap.set('n', '<leader>-', '<C-x>', { desc = 'Decrement number' }) -- decrement
+
+-- window management
+vim.keymap.set('n', '<leader>wv', '<C-w>v', { desc = 'Split [W]indow [V]ertically' }) -- split window vertically
+vim.keymap.set('n', '<leader>wh', '<C-w>s', { desc = 'Split [W]indow [H]orizontally' }) -- split window horizontally
+vim.keymap.set('n', '<leader>we', '<C-w>=', { desc = 'Make [W]indow splits [=]equal size' }) -- make split windows equal width & height
+vim.keymap.set('n', '<leader>wx', '<cmd>close<CR>', { desc = '[X] Close current split' }) -- close current split window
+
+vim.keymap.set('n', '<leader>to', '<cmd>tabnew<CR>', { desc = '[O]pen new tab' }) -- open new tab
+vim.keymap.set('n', '<leader>tx', '<cmd>tabclose<CR>', { desc = '[X] Close current tab' }) -- close current tab
+vim.keymap.set('n', '<leader>tn', '<cmd>tabn<CR>', { desc = 'Go to [N]ext tab' }) --  go to next tab
+vim.keymap.set('n', '<leader>tp', '<cmd>tabp<CR>', { desc = 'Go to [P]revious tab' }) --  go to previous tab
+vim.keymap.set('n', '<leader>tf', '<cmd>tabnew %<CR>', { desc = 'Open current bu[F]fer in new tab' }) --  move current buffer to new tab
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
