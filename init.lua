@@ -792,7 +792,9 @@ require('lazy').setup({
           end,
         },
         completion = { completeopt = 'menu,menuone,noinsert' },
-
+        formatting = {
+          format = require('nvim-highlight-colors').format,
+        },
         -- sorting = {
         --   comparators = {
         --     function(entry1, entry2)
@@ -1030,7 +1032,7 @@ vim.opt.smarttab = true
 require('plenary.filetype').add_file 'foo'
 
 vim.diagnostic.config {
-  virtual_text = false,
+  virtual_text = true,
   signs = true,
   underline = true,
   update_in_insert = false,
