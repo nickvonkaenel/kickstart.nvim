@@ -276,63 +276,6 @@ require('lazy').setup({
   -- after the plugin has been loaded:
   --  config = function() ... end
 
-  { -- Useful plugin to show you pending keybinds.
-    'folke/which-key.nvim',
-    event = 'VimEnter', -- Sets the loading event to 'VimEnter'
-    opts = {
-      icons = {
-        -- set icon mappings to true if you have a Nerd Font
-        mappings = vim.g.have_nerd_font,
-        -- If you are using a Nerd Font: set icons.keys to an empty table which will use the
-        -- default whick-key.nvim defined Nerd Font icons, otherwise define a string table
-        keys = vim.g.have_nerd_font and {} or {
-          Up = '<Up> ',
-          Down = '<Down> ',
-          Left = '<Left> ',
-          Right = '<Right> ',
-          C = '<C-…> ',
-          M = '<M-…> ',
-          D = '<D-…> ',
-          S = '<S-…> ',
-          CR = '<CR> ',
-          Esc = '<Esc> ',
-          ScrollWheelDown = '<ScrollWheelDown> ',
-          ScrollWheelUp = '<ScrollWheelUp> ',
-          NL = '<NL> ',
-          BS = '<BS> ',
-          Space = '<Space> ',
-          Tab = '<Tab> ',
-          F1 = '<F1>',
-          F2 = '<F2>',
-          F3 = '<F3>',
-          F4 = '<F4>',
-          F5 = '<F5>',
-          F6 = '<F6>',
-          F7 = '<F7>',
-          F8 = '<F8>',
-          F9 = '<F9>',
-          F10 = '<F10>',
-          F11 = '<F11>',
-          F12 = '<F12>',
-        },
-      },
-
-      -- Document existing key chains
-      spec = {
-        { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
-        { '<leader>d', group = '[D]ocument' },
-        { '<leader>r', group = '[R]ename' },
-        { '<leader>s', group = '[S]earch' },
-        { '<leader>w', group = '[W]orkspace/Window' },
-        { '<leader>t', group = '[T]ab' },
-        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
-        { '<leader>g', group = 'Lazy[G]it' },
-        { '<leader>u', group = '[U]ndo' },
-        { '<leader>e', group = '[E]xplore' },
-      },
-    },
-  },
-
   -- NOTE: Plugins can specify dependencies.
   --
   -- The dependencies are proper plugin specifications as well - anything
@@ -1085,18 +1028,24 @@ vim.keymap.set('n', '<leader>tx', '<cmd>tabclose<CR>', { desc = '[X] Close curre
 vim.keymap.set('n', '<leader>tn', '<cmd>tabn<CR>', { desc = 'Go to [N]ext tab' }) --  go to next tab
 vim.keymap.set('n', '<leader>tp', '<cmd>tabp<CR>', { desc = 'Go to [P]revious tab' }) --  go to previous tab
 vim.keymap.set('n', '<leader>tf', '<cmd>tabnew %<CR>', { desc = 'Open current bu[F]fer in new tab' }) --  move current buffer to new tab
+vim.keymap.set('n', '<leader>1', '1gt' ) --  go to first tab
+vim.keymap.set('n', '<leader>2', '2gt' ) --  go to second tab
+vim.keymap.set('n', '<leader>3', '3gt' ) --  go to third tab
+vim.keymap.set('n', '<leader>4', '4gt' ) --  go to fourth tab
+vim.keymap.set('n', '<leader>5', '5gt' ) --  go to fifth tab
+vim.keymap.set('n', '<leader>6', '6gt' ) --  go to sixth tab
+vim.keymap.set('n', '<leader>7', '7gt' ) --  go to seventh tab
+vim.keymap.set('n', '<leader>8', '8gt' ) --  go to eighth tab
+vim.keymap.set('n', '<leader>9', '9gt' ) --  go to ninth tab
 
 local hop = require 'hop'
 local directions = require('hop.hint').HintDirection
--- vim.keymap.set('', 's', function()
---   hop.hint_patterns { direction = directions.AFTER_CURSOR, current_line_only = false }
--- end, { remap = true })
--- vim.keymap.set('', 'S', function()
---   hop.hint_patterns { direction = directions.BEFORE_CURSOR + directions.AFTER_CURSOR, current_line_only = false }
--- end, { remap = true })
 vim.keymap.set('', 'f', function()
   hop.hint_words { direction = directions.AFTER_CURSOR + directions.AFTER_CURSOR, current_line_only = false }
 end, { remap = true })
 vim.keymap.set('', 'F', function()
   hop.hint_lines { direction = directions.BEFORE_CURSOR + directions.AFTER_CURSOR, current_line_only = false }
 end, { remap = true })
+
+-- The line beneath this is called `modeline`. See `:help modeline`
+-- vim: ts=2 sts=2 sw=2 et
