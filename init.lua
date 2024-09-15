@@ -499,7 +499,7 @@ require('lazy').setup({
 
           -- Rename the variable under your cursor.
           --  Most Language Servers support renaming across files, etc.
-          map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+          map('<leader>n', vim.lsp.buf.rename, 'Re[N]ame')
 
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
@@ -846,8 +846,8 @@ require('lazy').setup({
         bg = '#121212',
       },
       options = {
-        transparency = false,
-        lualine_transparency = false,
+        transparency = true,
+        lualine_transparency = true,
         cursorline = false,
       },
     },
@@ -1028,15 +1028,15 @@ vim.keymap.set('n', '<leader>tx', '<cmd>tabclose<CR>', { desc = '[X] Close curre
 vim.keymap.set('n', '<leader>tn', '<cmd>tabn<CR>', { desc = 'Go to [N]ext tab' }) --  go to next tab
 vim.keymap.set('n', '<leader>tp', '<cmd>tabp<CR>', { desc = 'Go to [P]revious tab' }) --  go to previous tab
 vim.keymap.set('n', '<leader>tf', '<cmd>tabnew %<CR>', { desc = 'Open current bu[F]fer in new tab' }) --  move current buffer to new tab
-vim.keymap.set('n', '<leader>1', '1gt' ) --  go to first tab
-vim.keymap.set('n', '<leader>2', '2gt' ) --  go to second tab
-vim.keymap.set('n', '<leader>3', '3gt' ) --  go to third tab
-vim.keymap.set('n', '<leader>4', '4gt' ) --  go to fourth tab
-vim.keymap.set('n', '<leader>5', '5gt' ) --  go to fifth tab
-vim.keymap.set('n', '<leader>6', '6gt' ) --  go to sixth tab
-vim.keymap.set('n', '<leader>7', '7gt' ) --  go to seventh tab
-vim.keymap.set('n', '<leader>8', '8gt' ) --  go to eighth tab
-vim.keymap.set('n', '<leader>9', '9gt' ) --  go to ninth tab
+vim.keymap.set('n', '<leader>1', '1gt') --  go to first tab
+vim.keymap.set('n', '<leader>2', '2gt') --  go to second tab
+vim.keymap.set('n', '<leader>3', '3gt') --  go to third tab
+vim.keymap.set('n', '<leader>4', '4gt') --  go to fourth tab
+vim.keymap.set('n', '<leader>5', '5gt') --  go to fifth tab
+vim.keymap.set('n', '<leader>6', '6gt') --  go to sixth tab
+vim.keymap.set('n', '<leader>7', '7gt') --  go to seventh tab
+vim.keymap.set('n', '<leader>8', '8gt') --  go to eighth tab
+vim.keymap.set('n', '<leader>9', '9gt') --  go to ninth tab
 
 local hop = require 'hop'
 local directions = require('hop.hint').HintDirection
