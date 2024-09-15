@@ -1,9 +1,8 @@
 -- Neo-tree is a Neovim plugin to browse the file system
 -- https://github.com/nvim-neo-tree/neo-tree.nvim
 
-local is_windows = vim.fn.has 'win32' == 1
-local nvk_path = is_windows and 't:/REAPER/Scripts/nvk-ReaScripts' or '/Applications/REAPER/Scripts/nvk-ReaScripts'
-local nvim_path = is_windows and '~/AppData/Local/nvim' or '~/.config/nvim'
+local nvk_path = vim.g.nvk_path
+local nvim_path = vim.fn.stdpath 'config'
 
 vim.api.nvim_create_user_command('Nvk', function()
   -- Execute Neotree reveal

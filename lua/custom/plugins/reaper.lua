@@ -13,6 +13,10 @@ end, { nargs = 1 })
 vim.keymap.set('n', '<leader>r', function()
   local ext = vim.fn.expand '%:e'
   local filepath = vim.fn.expand '%:p'
+  if not filepath:find 'nvk%-ReaScripts' then
+    vim.notify('Reascript command only supports nvk-ReaScripts files', vim.log.levels.ERROR)
+    return
+  end
   if ext == 'dat' then
   elseif ext ~= 'lua' then
     vim.notify('Reascript command only supports .lua and .dat files', vim.log.levels.ERROR)
