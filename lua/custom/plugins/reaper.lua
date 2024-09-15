@@ -13,11 +13,74 @@ end, { nargs = 1 })
 vim.keymap.set('n', '<leader>r', function()
   local ext = vim.fn.expand '%:e'
   local filepath = vim.fn.expand '%:p'
-  if not filepath:find 'nvk%-ReaScripts' then
-    vim.notify('Reascript command only supports nvk-ReaScripts files', vim.log.levels.ERROR)
+  if not filepath:find 'REAPER' then
+    vim.notify('Reascript command only supports ReaScript files', vim.log.levels.ERROR)
     return
   end
   if ext == 'dat' then
+    -- Find '/scripts/' in the filepath
+    local scripts_index = filepath:find '/scripts/'
+    if not scripts_index then
+      vim.notify('/scripts/ not found in the filepath', vim.log.levels.ERROR)
+      return
+    end
+
+    -- Get the folder name after '/scripts/'
+    local after_scripts = filepath:sub(scripts_index + #'/scripts/')
+    local folder_name = after_scripts:match '([^/]+)'
+    if not folder_name then
+      vim.notify('Could not find folder name after /scripts/', vim.log.levels.ERROR)
+      return
+    end
+
+    -- Replace underscores with spaces
+    local search_name = folder_name:gsub('_', ' ')
+
+    -- Find 'nvk-ReaScripts/' in the filepath
+    local nvk_index = filepath:find 'nvk%-ReaScripts/'
+    if not nvk_index then
+      vim.notify('nvk-ReaScripts/ not found in the filepath', vim.log.levels.ERROR)
+      return
+    end
+
+    -- Get the path up to 'nvk-ReaScripts/'
+    local nvk_path = filepath:sub(1, nvk_index + #'nvk-ReaScripts/' - 1)
+
+    -- Get the first folder after 'nvk-ReaScripts/'
+    local after_nvk = filepath:sub(nvk_index + #'nvk-ReaScripts/')
+    local target_dir = after_nvk:match '([^/]+)'
+    if not target_dir then
+      vim.notify('Could not find folder after nvk-ReaScripts/', vim.log.levels.ERROR)
+      return
+    end
+
+    -- Construct the search directory
+    local search_dir = nvk_path .. target_dir
+
+    -- Search for .lua files in 'search_dir' (recursively) that contain 'search_name' (case-insensitive)
+    local lua_files = vim.fn.globpath(search_dir, '**/*.lua', true, true)
+
+    local shortest_name_length = nil
+    local chosen_file = nil
+
+    for _, file in ipairs(lua_files) do
+      local filename = vim.fn.fnamemodify(file, ':t')
+      if filename:lower():find(search_name:lower()) then
+        local name_length = #filename
+        if not shortest_name_length or name_length < shortest_name_length then
+          shortest_name_length = name_length
+          chosen_file = file
+        end
+      end
+    end
+
+    if not chosen_file then
+      vim.notify('No matching .lua files found in ' .. search_dir, vim.log.levels.ERROR)
+      return
+    end
+
+    -- Set 'filepath' to the chosen file
+    filepath = chosen_file
   elseif ext ~= 'lua' then
     vim.notify('Reascript command only supports .lua and .dat files', vim.log.levels.ERROR)
     return
