@@ -326,7 +326,7 @@ require('lazy').setup({
         { '<leader>w', group = '[W]orkspace/Window' },
         { '<leader>t', group = '[T]ab' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
-        { '<leader>l', group = '[L]azygit' },
+        { '<leader>g', group = 'Lazy[G]it' },
         { '<leader>u', group = '[U]ndo' },
         { '<leader>e', group = '[E]xplore' },
       },
@@ -429,6 +429,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
       vim.keymap.set('n', '<leader>st', '<cmd>TodoTelescope<CR>', { desc = '[S]earch [T]odo' })
+      vim.keymap.set('n', '<leader>se', builtin.git_status, { desc = '[S]earch [E]dit' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
@@ -935,7 +936,6 @@ require('lazy').setup({
         },
         n_lines = 500,
       }
-
       -- Add/delete/replace surroundings (brackets, quotes, etc.)
       --
       -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
@@ -1086,5 +1086,17 @@ vim.keymap.set('n', '<leader>tn', '<cmd>tabn<CR>', { desc = 'Go to [N]ext tab' }
 vim.keymap.set('n', '<leader>tp', '<cmd>tabp<CR>', { desc = 'Go to [P]revious tab' }) --  go to previous tab
 vim.keymap.set('n', '<leader>tf', '<cmd>tabnew %<CR>', { desc = 'Open current bu[F]fer in new tab' }) --  move current buffer to new tab
 
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
+local hop = require 'hop'
+local directions = require('hop.hint').HintDirection
+-- vim.keymap.set('', 's', function()
+--   hop.hint_patterns { direction = directions.AFTER_CURSOR, current_line_only = false }
+-- end, { remap = true })
+-- vim.keymap.set('', 'S', function()
+--   hop.hint_patterns { direction = directions.BEFORE_CURSOR + directions.AFTER_CURSOR, current_line_only = false }
+-- end, { remap = true })
+vim.keymap.set('', 'f', function()
+  hop.hint_words { direction = directions.AFTER_CURSOR + directions.AFTER_CURSOR, current_line_only = false }
+end, { remap = true })
+vim.keymap.set('', 'F', function()
+  hop.hint_lines { direction = directions.BEFORE_CURSOR + directions.AFTER_CURSOR, current_line_only = false }
+end, { remap = true })
