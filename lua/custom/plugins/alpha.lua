@@ -5,10 +5,13 @@ return {
     local alpha = require 'alpha'
     local dashboard = require 'alpha.themes.dashboard'
     local time = os.date '%I:%M %p' -- 12-hour format with AM/PM
+    local day = os.date '%A'
     local date = os.date '%b %d %Y' -- Month Day Year format (e.g., Sep 16 2024)
     local v = vim.version()
     local version = '  v' .. v.major .. '.' .. v.minor .. '.' .. v.patch
-
+    if time:sub(1, 1) == '0' then
+      time = time:sub(2)
+    end
     dashboard.section.header.val = {
       '  ▓▓▓▓▓▓▓▓▓▓░                      ▓░          ▓░                    ▓░       ',
       ' ▓▓▓░    ▓▓░       ▓▓▓▓▓░  ▓░   ▓░ ▓░ ▓▓░     ▓▓▓▓░  ▓▓▓▓░   ▓▓▓▓░   ▓░  ▓▓▓▓░',
@@ -39,7 +42,7 @@ return {
       dashboard.section.header,
       { type = 'padding', val = 4 },
       dashboard.section.buttons,
-      { type = 'padding', val = 4 },
+      { type = 'padding', val = 2 },
       dashboard.section.footer,
     }
     -- dashboard.opts.opts.margin = 50
@@ -50,12 +53,20 @@ return {
       return string.rep(' ', leftPadding) .. text .. string.rep(' ', rightPadding)
     end
 
+    local function leftText(text, width)
+      local totalPadding = width - #text + 1
+      return text .. string.rep(' ', totalPadding)
+    end
+
+    print(os.date '%H')
+    local dayicon = tonumber(os.date '%H') < 18 and '' or ''
+
     dashboard.section.footer.val = {
-      centerText('  ' .. os.date '%A %d %B %Y', 50),
-      '',
-      '',
       centerText('  ' .. time, 50),
       '',
+      centerText(dayicon .. '  ' .. day, 50),
+      '',
+      centerText('  ' .. date, 50),
       '',
       centerText(version, 50),
     }

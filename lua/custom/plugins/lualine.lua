@@ -65,6 +65,7 @@ return {
         section_separators = { left = '', right = '' },
         component_separators = { left = ' ', right = ' ' },
         always_divide_middle = false,
+        disabled_filetypes = { 'NvimTree', 'alpha' },
       },
       sections = {
         lualine_c = {
@@ -88,7 +89,7 @@ return {
             color = { fg = colors.orange },
           },
           { 'encoding' },
-          { 'fileformat', symbols = { unix = 'unix', dos = 'dos', mac = 'mac' } },
+          { 'fileformat', symbols = { unix = '󰀶', dos = '󰨡', mac = '󰀶' } },
           { 'filetype' },
         },
       },
