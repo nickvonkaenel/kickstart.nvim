@@ -10,7 +10,8 @@ vim.api.nvim_create_user_command('Reascript', function(opts)
   vim.cmd('!' .. reaper_path .. ' ' .. escaped_arg)
 end, { nargs = 1 })
 
-vim.keymap.set('n', '<leader>r', function()
+vim.api.nvim_create_user_command('RunActiveReascript', function(opts)
+  local open_reaper = opts.args == 'open'
   local ext = vim.fn.expand '%:e'
   local filepath = vim.fn.expand '%:p'
   if not filepath:find 'REAPER' then
@@ -88,10 +89,21 @@ vim.keymap.set('n', '<leader>r', function()
 
   vim.cmd 'write' -- Save the current file
   local cleanup_script = vim.fn.stdpath 'config' .. '/reaper/cleanup.lua'
-  local escaped_filepath = vim.fn.fnameescape(filepath)
+  -- local escaped_filepath = vim.fn.fnameescape(filepath)
+  -- vim.notify(escaped_filepath)
   vim.cmd('Reascript ' .. cleanup_script)
-  vim.cmd('Reascript ' .. escaped_filepath)
-  vim.cmd 'Reaper'
+  vim.cmd('Reascript ' .. filepath)
+  if open_reaper then
+    vim.cmd 'Reaper'
+  end
+end, { nargs = '?' })
+
+vim.keymap.set('n', '<leader>rr', function()
+  vim.cmd 'RunActiveReascript'
 end, { desc = '[R]un [R]eascript' })
+
+vim.keymap.set('n', '<leader>ro', function()
+  vim.cmd 'RunActiveReascript open'
+end, { desc = '[R]un Reascript [O]pen Reaper' })
 
 return {}

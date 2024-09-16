@@ -170,7 +170,7 @@ vim.opt.scrolloff = 10
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('n', '<leader>qf', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uick[F]ix list' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -507,7 +507,7 @@ require('lazy').setup({
 
           -- Rename the variable under your cursor.
           --  Most Language Servers support renaming across files, etc.
-          map('<leader>n', vim.lsp.buf.rename, 'Re[N]ame')
+          map('<leader>rn', vim.lsp.buf.rename, '[R]e[N]ame')
 
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
@@ -586,14 +586,17 @@ require('lazy').setup({
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
-        --
-
         lua_ls = {
           -- cmd = {...},
           filetypes = { 'lua', 'dat' },
           -- capabilities = {},
           settings = {
+            -- go here for settings https://luals.github.io/wiki/settings/
             Lua = {
+              hint = {
+                enable = true,
+              },
+
               completion = {
                 callSnippet = 'Replace',
               },
@@ -613,6 +616,10 @@ require('lazy').setup({
               },
               -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
               -- diagnostics = { disable = { 'missing-fields' } },
+              diagnostics = {
+                unusedLocalExclude = { 'i' },
+                globals = { 'vim', 'reaper', 'r', 'ImGui' },
+              },
             },
             files = {
               associations = {
@@ -1045,6 +1052,10 @@ vim.keymap.set('n', '<leader>6', '6gt') --  go to sixth tab
 vim.keymap.set('n', '<leader>7', '7gt') --  go to seventh tab
 vim.keymap.set('n', '<leader>8', '8gt') --  go to eighth tab
 vim.keymap.set('n', '<leader>9', '9gt') --  go to ninth tab
+
+vim.keymap.set('n', '<leader>ww', '<cmd>write<CR>', { desc = '[W]rite [W]ork File' }) -- write current file
+vim.keymap.set('n', '<leader>wq', '<cmd>wq<CR>', { desc = '[W]rite [Q]uit' }) -- write and quit
+vim.keymap.set('n', '<leader>qq', '<cmd>q<CR>', { desc = '[Q]uit [Q]uit' }) -- quit without saving
 
 local hop = require 'hop'
 local directions = require('hop.hint').HintDirection

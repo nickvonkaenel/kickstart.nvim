@@ -6,15 +6,23 @@ return {
     local dashboard = require 'alpha.themes.dashboard'
 
     dashboard.section.header.val = {
-
-      '                                                     ',
-      '  ███╗   ██╗██╗   ██╗██╗  ██╗██╗   ██╗██╗███╗   ███╗ ',
-      '  ████╗  ██║██║   ██║██║ ██╔╝██║   ██║██║████╗ ████║ ',
-      '  ██╔██╗ ██║██║   ██║█████╔╝ ██║   ██║██║██╔████╔██║ ',
-      '  ██║╚██╗██║╚██╗ ██╔╝██╔═██╗ ╚██╗ ██╔╝██║██║╚██╔╝██║ ',
-      '  ██║ ╚████║ ╚████╔╝ ██║  ██╗ ╚████╔╝ ██║██║ ╚═╝ ██║ ',
-      '  ╚═╝  ╚═══╝  ╚═══╝  ╚═╝  ╚═╝  ╚═══╝  ╚═╝╚═╝     ╚═╝ ',
-      '                                                     ',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '                                                                               ',
+      '   ▓▓▓▓▓▓▓▓▓▓░                      ▓░          ▓░                    ▓░       ',
+      '  ▓▓▓▓    ▓▓        ▓▓▓▓▓░  ▓░   ▓░ ▓░ ▓▓░     ▓▓▓▓░  ▓▓▓▓░   ▓▓▓▓░   ▓░ ▓▓▓▓▓░',
+      ' ▒▓▓      ░         ▓░   ▓░  ▓░ ▓░  ▓▓▓░        ▓░   ▓░   ▓░ ▓░   ▓░  ▓░  ▓▓░  ',
+      ' ▒▓           ▓     ▓░   ▓░  ▓░ ▓░  ▓░ ▓░       ▓░   ▓░   ▓░ ▓░   ▓░  ▓░   ▓▓░ ',
+      '      ▓     ▓▓      ▓░   ▓░   ▓▓░   ▓░  ▓░ ▓░    ▓▓░  ▓▓▓▓░   ▓▓▓▓░   ▓░ ▓▓▓▓▓░',
+      '   ▒▓▓▓   ▓▓▓                                                                  ',
+      '    ▒▓▓▓▓▓▓         󰋅 Reaper  |    Game Audio  |    Sound Design  |   Neovim',
+      '',
+      '',
+      '',
+      '',
     }
 
     -- Set menu
@@ -23,11 +31,13 @@ return {
       dashboard.button('SPC ee', '  > Toggle file explorer', ':Neotree reveal<CR>:set relativenumber!<CR>'),
       dashboard.button('SPC sf', '󰱼  > Find File', '<cmd>Telescope find_files<CR>'),
       dashboard.button('SPC sg', '  > Find Word', '<cmd>Telescope live_grep<CR>'),
-      dashboard.button('SPC wr', '󰁯  > Restore Session For Current Directory', '<cmd>SessionRestore<CR>'),
+      dashboard.button('SPC wr', '󰁯  > Restore Session', '<cmd>SessionRestore<CR>'),
       dashboard.button('n', '󰋅  > Open nvk-ReaScripts', ':Nvk<CR>'),
-      dashboard.button('v', '  > Open nvim config', ':Nvim<CR>'),
+      dashboard.button('v', '  > Open Neovim Config', ':Nvim<CR>'),
       dashboard.button('q', '  > Quit NVIM', '<cmd>qa<CR>'),
     }
+
+    dashboard.section.header.opts.hl = 'String'
 
     -- Send config to alpha
     alpha.setup(dashboard.opts)
