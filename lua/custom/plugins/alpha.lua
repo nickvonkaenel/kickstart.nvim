@@ -32,6 +32,7 @@ return {
       dashboard.button('f', '󰱼  > Find File', '<cmd>Telescope find_files<CR>'),
       dashboard.button('g', '  > Find Word', '<cmd>Telescope live_grep<CR>'),
       dashboard.button('r', '󰁯  > Restore Session', '<cmd>SessionRestore<CR>'),
+      dashboard.button('l', '  > LazyGit', '<cmd>LazyGit<CR>'),
       dashboard.button('n', '󰋅  > Open nvk-ReaScripts', ':Nvk<CR>'),
       dashboard.button('v', '  > Open Neovim Config', ':Nvim<CR>'),
       dashboard.button('q', '  > Quit NVIM', '<cmd>qa<CR>'),
