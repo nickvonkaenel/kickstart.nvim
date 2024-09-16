@@ -27,11 +27,11 @@ return {
 
     -- Set menu
     dashboard.section.buttons.val = {
-      dashboard.button('e', '  > New File', '<cmd>ene<CR>'),
-      dashboard.button('SPC ee', '  > Toggle file explorer', ':Neotree reveal<CR>:set relativenumber!<CR>'),
-      dashboard.button('SPC sf', '󰱼  > Find File', '<cmd>Telescope find_files<CR>'),
-      dashboard.button('SPC sg', '  > Find Word', '<cmd>Telescope live_grep<CR>'),
-      dashboard.button('SPC wr', '󰁯  > Restore Session', '<cmd>SessionRestore<CR>'),
+      dashboard.button('o', '  > New File', '<cmd>ene<CR>'),
+      dashboard.button('e', '  > Toggle file explorer', '<cmd>Telescope file_browser<CR>'),
+      dashboard.button('f', '󰱼  > Find File', '<cmd>Telescope find_files<CR>'),
+      dashboard.button('g', '  > Find Word', '<cmd>Telescope live_grep<CR>'),
+      dashboard.button('r', '󰁯  > Restore Session', '<cmd>SessionRestore<CR>'),
       dashboard.button('n', '󰋅  > Open nvk-ReaScripts', ':Nvk<CR>'),
       dashboard.button('v', '  > Open Neovim Config', ':Nvim<CR>'),
       dashboard.button('q', '  > Quit NVIM', '<cmd>qa<CR>'),

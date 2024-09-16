@@ -94,6 +94,20 @@ vim.g.maplocalleader = ' '
 local is_windows = vim.fn.has 'win32' == 1
 vim.g.nvk_path = is_windows and 't:/REAPER/Scripts/nvk-ReaScripts' or '/Applications/REAPER/Scripts/nvk-ReaScripts'
 
+vim.api.nvim_create_user_command('Nvk', function()
+  -- Execute Neotree reveal
+  -- set cwd to nvk-ReaScripts
+  vim.cmd('cd ' .. vim.g.nvk_path)
+  vim.cmd('Telescope file_browser path=' .. vim.g.nvk_path)
+end, {})
+
+-- Create a command to open nvim config
+vim.api.nvim_create_user_command('Nvim', function()
+  -- Execute Neotree reveal
+  vim.cmd('cd ' .. vim.fn.stdpath 'config')
+  vim.cmd('Telescope file_browser path=' .. vim.fn.stdpath 'config')
+end, {})
+
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
@@ -310,6 +324,7 @@ require('lazy').setup({
 
       -- Useful for getting pretty icons, but requires a Nerd Font.
       { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+      { 'nvim-telescope/telescope-file-browser.nvim' },
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -356,12 +371,29 @@ require('lazy').setup({
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
           },
+          file_browser = {
+            display_stat = false,
+            -- theme = 'ivy',
+            auto_depth = true,
+            hijack_netrw = true,
+            mappings = {
+              ['i'] = {
+                ['<C-u>'] = false,
+              },
+            },
+          },
         },
       }
 
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
+      pcall(require('telescope').load_extension, 'file_browser')
+
+      -- Setup Telescope File Browser
+      vim.keymap.set('n', '<leader>ee', ':Telescope file_browser<CR>', { desc = 'Fil[E] Brows[E]r', silent = true })
+      vim.keymap.set('n', '<leader>en', ':Nvk<CR>', { desc = '[N]vk-ReaScripts', silent = true })
+      vim.keymap.set('n', '<leader>ev', ':Nvim<CR>', { desc = '[N]vim config', silent = true })
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
