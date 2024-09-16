@@ -28,7 +28,7 @@ return {
     -- Set menu
     dashboard.section.buttons.val = {
       dashboard.button('o', '  > New File', '<cmd>ene<CR>'),
-      dashboard.button('e', '  > Toggle file explorer', '<cmd>Telescope file_browser<CR>'),
+      dashboard.button('e', '  > Browse Files', '<cmd>Telescope file_browser<CR>'),
       dashboard.button('f', '󰱼  > Find File', '<cmd>Telescope find_files<CR>'),
       dashboard.button('g', '  > Find Word', '<cmd>Telescope live_grep<CR>'),
       dashboard.button('r', '󰁯  > Restore Session', '<cmd>SessionRestore<CR>'),
