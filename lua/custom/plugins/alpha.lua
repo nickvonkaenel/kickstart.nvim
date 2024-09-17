@@ -9,6 +9,7 @@ return {
     local date = os.date '%b %d %Y' -- Month Day Year format (e.g., Sep 16 2024)
     local v = vim.version()
     local version = '  v' .. v.major .. '.' .. v.minor .. '.' .. v.patch
+    ---@cast time string
     if time:sub(1, 1) == '0' then
       time = time:sub(2)
     end

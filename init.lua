@@ -1086,7 +1086,7 @@ vim.keymap.set('n', '<leader>9', '9gt') --  go to ninth tab
 
 vim.keymap.set('n', '<leader>ww', '<cmd>write<CR>', { desc = '[W]rite [W]ork File' }) -- write current file
 vim.keymap.set('n', '<leader>wq', '<cmd>wq<CR>', { desc = '[W]rite [Q]uit' }) -- write and quit
-vim.keymap.set('n', '<leader>qq', '<cmd>q<CR>', { desc = '[Q]uit [Q]uit' }) -- quit without saving
+vim.keymap.set('n', '<leader>qq', '<cmd>q<CR>', { desc = '[Qq]uit' })
 
 local hop = require 'hop'
 local directions = require('hop.hint').HintDirection
@@ -1097,5 +1097,8 @@ vim.keymap.set('', 'F', function()
   hop.hint_lines { direction = directions.BEFORE_CURSOR + directions.AFTER_CURSOR, current_line_only = false }
 end, { remap = true })
 
+vim.keymap.set('n', '<leader>qa', '<cmd>qa<CR>', { desc = '[Q]uit [A]ll' })
+vim.keymap.set('n', '<leader>qQ', '<cmd>q!<CR>', { desc = '[QQ]uit no save' })
+vim.keymap.set('n', '<leader>aa', '<cmd>Alpha<CR>', { desc = '[A]lpha' })
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

@@ -103,7 +103,7 @@ vim.keymap.set('n', '<leader>rr', function()
 end, { desc = '[R]un [R]eascript' })
 
 vim.keymap.set('n', '<leader>ro', function()
-  vim.cmd 'RunActiveReascript open'
+  vim.cmd { cmd = 'RunActiveReascript', args = { 'open' } }
 end, { desc = '[R]un Reascript [O]pen Reaper' })
 
 return {}
