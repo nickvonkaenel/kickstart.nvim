@@ -363,6 +363,8 @@ require('lazy').setup({
               ['<C-f>'] = require('telescope.actions').preview_scrolling_up,
               ['<C-c>'] = require('telescope.actions').close,
               ['<C-l>'] = require('telescope.actions').delete_buffer,
+              ['<C-Down>'] = require('telescope.actions').cycle_history_next,
+              ['<C-Up>'] = require('telescope.actions').cycle_history_prev,
             },
           },
         },
@@ -379,6 +381,9 @@ require('lazy').setup({
             mappings = {
               ['i'] = {
                 ['<C-u>'] = false,
+                ['<C-Down>'] = require('telescope.actions').cycle_history_next,
+                ['<C-Up>'] = require('telescope.actions').cycle_history_prev,
+                ['<C-f>'] = require('telescope.actions').preview_scrolling_up,
               },
             },
           },
@@ -1018,7 +1023,7 @@ vim.opt.expandtab = true
 vim.opt.softtabstop = 4
 vim.opt.smarttab = true
 
-require('plenary.filetype').add_file 'foo'
+require('plenary.filetype').add_file 'dat'
 
 vim.diagnostic.config {
   virtual_text = true,
