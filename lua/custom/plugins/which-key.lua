@@ -54,6 +54,8 @@ return { -- Useful plugin to show you pending keybinds.
       { '<leader>g', group = '[L]azygit' },
       { '<leader>u', group = '[U]ndo' },
       { '<leader>e', group = '[E]xplore' },
+      { '[r', desc = 'Previous reference' },
+      { ']r', desc = 'Next reference' },
     },
   },
 }
