@@ -5,5 +5,9 @@ return {
     'nvim-treesitter/nvim-treesitter',
     'nvim-treesitter/nvim-treesitter-textobjects',
   },
-  opts = {},
+  opts = {
+    keymaps = {
+      horizontal_motions = false,
+    },
+  },
 }
