@@ -3,6 +3,10 @@
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
+-- Allow for cursor to go into empty space in visual block mode
+vim.opt.virtualedit = 'block'
+-- Enable true colors
+vim.opt.termguicolors = true
 -- Make line numbers default
 vim.opt.number = true
 vim.opt.relativenumber = true
