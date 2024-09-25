@@ -65,7 +65,15 @@ return { -- Fuzzy Finder (files, lsp, etc)
           },
         },
       },
-      -- pickers = {}
+      pickers = {
+        help_tags = {
+          mappings = {
+            i = {
+              ['<CR>'] = 'file_vsplit',
+            },
+          },
+        },
+      },
       extensions = {
         ['ui-select'] = {
           require('telescope.themes').get_dropdown(),

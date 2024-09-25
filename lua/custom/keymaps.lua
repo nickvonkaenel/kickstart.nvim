@@ -93,3 +93,27 @@ end, { remap = true })
 vim.keymap.set('n', '<leader>qa', '<cmd>qa<CR>', { desc = '[Q]uit [A]ll' })
 vim.keymap.set('n', '<leader>qQ', '<cmd>q!<CR>', { desc = '[QQ]uit no save' })
 vim.keymap.set('n', '<leader>al', '<cmd>Alpha<CR>', { desc = '[A][L]pha' })
+
+-- Source the current file
+vim.keymap.set('n', '<leader>so', function()
+  vim.cmd 'source %'
+  vim.notify('Current file sourced', vim.log.levels.INFO)
+end, { desc = '[S][O]urce current file' })
+
+vim.keymap.set('v', '<C-d>', function()
+  -- Yank the selected text into register 'h'
+  vim.cmd 'normal! "hy'
+
+  -- Get the yanked text and escape special characters
+  local pattern = vim.fn.escape(vim.fn.getreg 'h', '/\\')
+
+  -- Build the substitute command
+  -- local cmd = ':%s/' .. pattern .. '//gc'
+  local cmd = ':.,$s/' .. pattern .. '//gc' -- replace all occurrences until the end of the file with confirmation
+
+  -- Enter the command line with the substitute command
+  vim.api.nvim_feedkeys(cmd, 'n', false)
+
+  -- Move the cursor back three positions to before 'gc'
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<left><left><left>', true, false, true), 'n', true)
+end, { noremap = true, silent = true })
