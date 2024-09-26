@@ -49,6 +49,7 @@ return {
         mc.enableCursors()
       elseif mc.hasCursors() then
         mc.clearCursors()
+        vim.cmd [[nohlsearch]]
       else
         -- Default <esc> handler.
         vim.cmd [[nohlsearch]]
