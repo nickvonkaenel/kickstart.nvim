@@ -182,16 +182,27 @@ vim.filetype.add {
 
 require('plenary.filetype').add_file 'dat'
 
-vim.diagnostic.config {
-  virtual_text = true,
-  signs = true,
-  underline = true,
-  update_in_insert = false,
-}
+-- vim.diagnostic.config {
+--   virtual_text = true,
+--   signs = true,
+--   underline = true,
+--   update_in_insert = false,
+-- }
 
 -- Can uncomment to make comments italic
 vim.cmd [[highlight Comment cterm=italic gui=italic]]
 
+-- vim.cmd 'highlight Underlined gui=underline'
+
+-- Set undercurl for different diagnostic types without changing the text color
+local groups = { 'DiagnosticUnderlineError', 'DiagnosticUnderlineWarn', 'DiagnosticUnderlineInfo', 'DiagnosticUnderlineHint' }
+
+for _, group in ipairs(groups) do
+  -- Get the current highlight group
+  local hl = vim.api.nvim_get_hl_by_name(group, true)
+  -- Apply undercurl and preserve the existing colors
+  vim.api.nvim_set_hl(0, group, { undercurl = true, sp = hl.sp or hl.foreground or hl.fg })
+end
 require 'custom.keymaps'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
