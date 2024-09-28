@@ -58,15 +58,15 @@ vim.keymap.set('n', '<leader>+', '<C-a>', { desc = 'Increment number' }) -- incr
 vim.keymap.set('n', '<leader>-', '<C-x>', { desc = 'Decrement number' }) -- decrement
 
 -- window management
-vim.keymap.set('n', '<leader>wv', '<C-w>v', { desc = 'Split [W]indow [V]ertically' }) -- split window vertically
-vim.keymap.set('n', '<leader>wh', '<C-w>s', { desc = 'Split [W]indow [H]orizontally' }) -- split window horizontally
-vim.keymap.set('n', '<leader>we', '<C-w>=', { desc = 'Make [W]indow splits [=]equal size' }) -- make split windows equal width & height
-vim.keymap.set('n', '<leader>wx', '<cmd>close<CR>', { desc = '[X] Close current split' }) -- close current split window
+vim.keymap.set('n', '<leader>wl', '<C-w>v', { desc = 'Split Window Vertically' }) -- split window vertically
+vim.keymap.set('n', '<leader>wj', '<C-w>s', { desc = 'Split Window Horizontally' }) -- split window horizontally
+vim.keymap.set('n', '<leader>we', '<C-w>=', { desc = 'Make [W]indow splits [E]qual size' }) -- make split windows equal width & height
+vim.keymap.set('n', '<leader>x', '<cmd>close<CR>', { desc = '[X] Close' }) -- close current split window
 
-vim.keymap.set('n', '<leader>to', '<cmd>tabnew<CR>', { desc = '[O]pen new tab' }) -- open new tab
+vim.keymap.set('n', '<leader>tn', '<cmd>tabnew<CR>', { desc = 'New tab' }) -- open new tab
 vim.keymap.set('n', '<leader>tx', '<cmd>tabclose<CR>', { desc = '[X] Close current tab' }) -- close current tab
-vim.keymap.set('n', '<leader>tn', '<cmd>tabn<CR>', { desc = 'Go to [N]ext tab' }) --  go to next tab
-vim.keymap.set('n', '<leader>tp', '<cmd>tabp<CR>', { desc = 'Go to [P]revious tab' }) --  go to previous tab
+vim.keymap.set('n', '<leader>tl', '<cmd>tabn<CR>', { desc = 'Next tab' }) --  go to next tab
+vim.keymap.set('n', '<leader>th', '<cmd>tabp<CR>', { desc = 'Previous tab' }) --  go to previous tab
 vim.keymap.set('n', '<leader>tf', '<cmd>tabnew %<CR>', { desc = 'Open current bu[F]fer in new tab' }) --  move current buffer to new tab
 vim.keymap.set('n', '<leader>1', '1gt') --  go to first tab
 vim.keymap.set('n', '<leader>2', '2gt') --  go to second tab
@@ -139,3 +139,5 @@ vim.keymap.set('n', '<leader><leader>h', smart_splits.swap_buf_left)
 vim.keymap.set('n', '<leader><leader>j', smart_splits.swap_buf_down)
 vim.keymap.set('n', '<leader><leader>k', smart_splits.swap_buf_up)
 vim.keymap.set('n', '<leader><leader>l', smart_splits.swap_buf_right)
+
+vim.keymap.set('n', '<C-;>', require('vim._comment').operator() .. '_', { desc = '[C-/] Comment/Uncomment', noremap = true, silent = true })
