@@ -76,7 +76,7 @@ return {
 
         -- Fuzzy find all the symbols in your current document.
         --  Symbols are things like variables, functions, types, etc.
-        map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+        map('<leader>ss', require('telescope.builtin').lsp_document_symbols, '[S]earch Document [S]ymbols')
 
         -- Fuzzy find all the symbols in your current workspace.
         --  Similar to document symbols, except searches over your entire project.
@@ -122,7 +122,22 @@ return {
             end,
           })
         end
-
+        vim.diagnostic.config {
+          underline = {
+            severity = {
+              min = vim.diagnostic.severity.HINT,
+              max = vim.diagnostic.severity.ERROR,
+            },
+          },
+          virtual_text = {
+            severity = {
+              min = vim.diagnostic.severity.ERROR,
+              max = vim.diagnostic.severity.ERROR,
+            },
+            prefix = '▎', -- Could be '●', '▎', 'x'
+            virt_text_pos = 'eol', -- Could be 'eol', 'overlay', 'right_align', 'inline'
+          },
+        }
         -- The following code creates a keymap to toggle inlay hints in your
         -- code, if the language server you are using supports them
         --

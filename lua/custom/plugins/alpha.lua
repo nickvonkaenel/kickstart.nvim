@@ -39,9 +39,9 @@ return {
     dashboard.section.header.opts.hl = 'String'
 
     dashboard.opts.layout = {
-      { type = 'padding', val = 6 },
+      { type = 'padding', val = 2 },
       dashboard.section.header,
-      { type = 'padding', val = 6 },
+      { type = 'padding', val = 4 },
       dashboard.section.buttons,
       { type = 'padding', val = 4 },
       dashboard.section.footer,
@@ -135,8 +135,6 @@ return {
       '',
       '',
       '',
-      '',
-      '',
       '  ██████████░                      █░          █░                    █░       ',
       ' ███░    ██░       █████░  █░   █░ █░ ██░     ████░  ████░   ████░   █░  ████░',
       '██░      █░        █░   █░  █░ █░  ███░        █░   █░   █░ █░   █░  █░ ██░   ',
@@ -172,8 +170,6 @@ return {
       [[                               bbbb       aaaaa  ]],
       [[                                                 ]],
       [[                               a  a  a  b  b  b  ]],
-      '',
-      '',
       '',
       '',
       '',
