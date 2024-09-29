@@ -66,7 +66,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
             mirror = false,
           },
           width = 0.8,
-          height = 0.78,
+          height = 0.5,
           preview_cutoff = 120,
         },
         file_ignore_patterns = { 'ICONS/', '.git/', 'ICONS\\', '.git\\', '.*shorthand.json' },
