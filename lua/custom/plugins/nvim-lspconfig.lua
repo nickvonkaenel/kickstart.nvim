@@ -178,6 +178,7 @@ return {
       --
       -- But for many setups, the LSP (`ts_ls`) will work just fine
       -- ts_ls = {},
+      ruby_lsp = {},
       lua_ls = {
         -- cmd = {...},
         filetypes = { 'lua', 'dat' },
@@ -210,7 +211,7 @@ return {
             -- diagnostics = { disable = { 'missing-fields' } },
             diagnostics = {
               unusedLocalExclude = { 'i' },
-              globals = { 'vim', 'reaper', 'r', 'ImGui' },
+              globals = { 'vim', 'reaper', 'r', 'ImGui', 'pcall' },
             },
           },
           files = {

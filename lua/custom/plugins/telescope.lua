@@ -50,6 +50,25 @@ return { -- Fuzzy Finder (files, lsp, etc)
       --  All the info you're looking for is in `:help telescope.setup()`
       --
       defaults = {
+        wrap_results = false,
+        layout_strategy = 'horizontal',
+        dynamic_preview_title = true,
+        hl_result_eol = true,
+        sorting_strategy = 'ascending',
+        results_title = '', -- Remove `Results` title
+        layout_config = {
+          horizontal = {
+            prompt_position = 'top',
+            preview_width = 0.55,
+            results_width = 0.8,
+          },
+          vertical = {
+            mirror = false,
+          },
+          width = 0.8,
+          height = 0.80,
+          preview_cutoff = 120,
+        },
         file_ignore_patterns = { 'ICONS/', '.git/', 'ICONS\\', '.git\\', '.*shorthand.json' },
         mappings = {
           i = {
@@ -62,6 +81,9 @@ return { -- Fuzzy Finder (files, lsp, etc)
             ['<C-l>'] = require('telescope.actions').delete_buffer,
             ['<C-Down>'] = require('telescope.actions').cycle_history_next,
             ['<C-Up>'] = require('telescope.actions').cycle_history_prev,
+          },
+          n = {
+            ['q'] = require('telescope.actions').close,
           },
         },
       },
@@ -80,7 +102,6 @@ return { -- Fuzzy Finder (files, lsp, etc)
         },
         file_browser = {
           display_stat = false,
-          -- theme = 'ivy',
           auto_depth = true,
           hijack_netrw = true,
           mappings = {
