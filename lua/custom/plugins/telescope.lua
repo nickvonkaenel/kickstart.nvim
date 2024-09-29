@@ -120,6 +120,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     pcall(require('telescope').load_extension, 'fzf')
     pcall(require('telescope').load_extension, 'ui-select')
     pcall(require('telescope').load_extension, 'file_browser')
+    pcall(require('telescope').load_extension, 'frecency')
 
     -- Setup Telescope File Browser
     vim.keymap.set('n', '<leader>ee', ':Telescope file_browser<CR>', { desc = 'Fil[E] Brows[E]r', silent = true })
@@ -139,7 +140,11 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
     vim.keymap.set('n', '<leader>sa', builtin.buffers, { desc = '[S]earch [A]ctive Buffers' })
     vim.keymap.set('n', '<leader>st', '<cmd>TodoTelescope<CR>', { desc = '[S]earch [T]odo' })
-    vim.keymap.set('n', '<leader>se', builtin.git_status, { desc = '[S]earch [E]dit' })
+    vim.keymap.set('n', '<leader>gs', builtin.git_status, { desc = '[G]it [S]tatus' })
+    vim.keymap.set('n', '<leader>gb', builtin.git_branches, { desc = '[G]it [B]ranches' })
+    vim.keymap.set('n', '<leader>gc', builtin.git_commits, { desc = '[G]it [C]ommits' })
+    vim.keymap.set('n', '<leader>P', builtin.commands, { desc = 'Command [P]alette' })
+    vim.keymap.set('n', '<leader>p', '<cmd>Telescope frecency<CR>', { desc = 'File [P]icker' })
 
     -- Slightly advanced example of overriding default behavior and theme
     vim.keymap.set('n', '<leader>/', function()

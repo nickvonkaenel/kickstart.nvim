@@ -203,12 +203,18 @@ for _, group in ipairs(groups) do
   -- Apply undercurl and preserve the existing colors
   vim.api.nvim_set_hl(0, group, { undercurl = true, sp = hl.sp or hl.fg })
 end
-require 'custom.keymaps'
 
 -- Subtle background contrast for QuickFixLine in One Dark Pro theme
 vim.api.nvim_set_hl(0, 'QuickFixLine', { bg = '#808080', fg = '#000000', bold = true })
 -- vim.api.nvim_set_hl(0, 'qfFileName', { bg = 'NONE', fg = '#61afef' })
 vim.api.nvim_set_hl(0, 'qfLineNr', { bg = 'NONE', fg = '#98c379' })
 
+vim.api.nvim_set_hl(0, 'TelescopeSelection', { fg = '#c678dd', bg = '#1e1e1e' }) -- make telescope selections more visible
+vim.api.nvim_set_hl(0, 'TelescopePreviewDirectory', {
+  bold = true,
+  italic = true,
+})
+
+require 'custom.keymaps'
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

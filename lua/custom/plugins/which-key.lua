@@ -51,7 +51,7 @@ return { -- Useful plugin to show you pending keybinds.
       { '<leader>w', group = '[W]orkspace/Window' },
       { '<leader>t', group = '[T]ab' },
       { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
-      { '<leader>g', group = '[L]azygit' },
+      { '<leader>g', group = '[G]o/Git' },
       { '<leader>u', group = '[U]ndo' },
       { '<leader>e', group = '[E]xplore' },
       { '[r', desc = 'Previous reference' },
