@@ -34,12 +34,13 @@ return {
       local sc_ = sc:gsub('%s', ''):gsub(leader, '<leader>')
 
       local opts = {
-        position = 'center',
-        shortcut = sc .. ' ',
-        cursor = 3,
-        width = 17,
-        align_shortcut = 'right',
+        position = 'left',
+        shortcut = '',
+        cursor = -2,
+        width = 0,
+        -- align_shortcut = 'right',
         hl_shortcut = 'Keyword',
+        hl = 'SpecialComment',
       }
       if keybind then
         keybind_opts = if_nil(keybind_opts, { noremap = true, silent = true, nowait = true })
@@ -59,18 +60,29 @@ return {
       }
     end
 
-    -- Set menu
     dashboard.section.buttons.val = {
-      button('o', '  open', '<cmd>ene<CR>'),
-      button('s', '󰱼  search', '<cmd>Telescope find_files<CR>'),
-      button('r', '󰁯  restore', '<cmd>SessionRestore<CR>'),
-      button('n', '󰋅  nvk.tools', ':Nvk<CR>'),
-      button('c', '  config', ':Nvim<CR>'),
-      -- button('e', '  Browse Files', '<cmd>Telescope file_browser<CR>'),
-      -- button('g', '  Find Word', '<cmd>Telescope live_grep<CR>'),
-      -- button('l', '  LazyGit', '<cmd>LazyGit<CR>'),
-      button('q', '  quit', '<cmd>qa<CR>'),
+      button('o', 'open', '<cmd>ene<CR>'),
+      button('s', 'search', '<cmd>Telescope find_files<CR>'),
+      button('r', 'restore', '<cmd>SessionRestore<CR>'),
+      button('n', 'nvk.tools', ':Nvk<CR>'),
+      button('c', 'config', ':Nvim<CR>'),
+      -- button('e', 'Browse Files', '<cmd>Telescope file_browser<CR>'),
+      -- button('g', 'Find Word', '<cmd>Telescope live_grep<CR>'),
+      -- button('l', 'LazyGit', '<cmd>LazyGit<CR>'),
+      button('q', 'quit', '<cmd>qa<CR>'),
     }
+    -- Set menu
+    -- dashboard.section.buttons.val = {
+    --   button('o', '  open', '<cmd>ene<CR>'),
+    --   button('s', '󰱼  search', '<cmd>Telescope find_files<CR>'),
+    --   button('r', '󰁯  restore', '<cmd>SessionRestore<CR>'),
+    --   button('n', '󰋅  nvk.tools', ':Nvk<CR>'),
+    --   button('c', '  config', ':Nvim<CR>'),
+    --   -- button('e', '  Browse Files', '<cmd>Telescope file_browser<CR>'),
+    --   -- button('g', '  Find Word', '<cmd>Telescope live_grep<CR>'),
+    --   -- button('l', '  LazyGit', '<cmd>LazyGit<CR>'),
+    --   button('q', '  quit', '<cmd>qa<CR>'),
+    -- }
 
     -- dashboard.section.buttons.val = {
     --   button('r', ' Restore Session', '<cmd>SessionRestore<CR>'),
@@ -85,15 +97,15 @@ return {
     -- }
     dashboard.section.header.opts.hl = 'String'
 
-    -- dashboard.section.header.opts.position = 'left'
-    -- dashboard.section.footer.opts.position = 'left'
+    dashboard.section.header.opts.position = 'left'
+    dashboard.section.footer.opts.position = 'left'
 
     dashboard.opts.layout = {
       { type = 'padding', val = 1 },
       dashboard.section.header,
       { type = 'padding', val = 2 },
-      dashboard.section.footer,
-      { type = 'padding', val = 2 },
+      -- dashboard.section.footer,
+      -- { type = 'padding', val = 2 },
       dashboard.section.buttons,
     }
     -- dashboard.opts.opts.margin = 50
