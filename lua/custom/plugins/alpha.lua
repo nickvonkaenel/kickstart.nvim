@@ -97,7 +97,7 @@ return {
     -- }
     dashboard.section.header.opts.hl = 'String'
 
-    dashboard.section.header.opts.position = 'left'
+    dashboard.section.header.opts.position = 'center'
     dashboard.section.footer.opts.position = 'left'
 
     dashboard.opts.layout = {

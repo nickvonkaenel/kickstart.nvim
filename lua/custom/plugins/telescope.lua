@@ -59,14 +59,14 @@ return { -- Fuzzy Finder (files, lsp, etc)
         layout_config = {
           horizontal = {
             prompt_position = 'top',
-            preview_width = 0.55,
+            preview_width = 0.49,
             results_width = 0.8,
           },
           vertical = {
             mirror = false,
           },
           width = 0.8,
-          height = 0.80,
+          height = 0.78,
           preview_cutoff = 120,
         },
         file_ignore_patterns = { 'ICONS/', '.git/', 'ICONS\\', '.git\\', '.*shorthand.json' },
