@@ -19,5 +19,14 @@ return { -- Collection of various small independent plugins/modules
     -- - sd'   - [S]urround [D]elete [']quotes
     -- - sr)'  - [S]urround [R]eplace [)] [']
     require('mini.surround').setup()
+
+    require('mini.files').setup {
+      windows = {
+        preview = true,
+      },
+    }
+
+    vim.keymap.set('n', '<leader>f', '<cmd>lua MiniFiles.open()<CR>', { desc = '[F]iles' })
+    vim.api.nvim_set_hl(0, 'MiniFilesCursorLine', { link = 'NONE' }) -- remove cursorline highlight
   end,
 }

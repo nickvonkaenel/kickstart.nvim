@@ -3,6 +3,20 @@
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
+-- Fix for shell on Windows. Source: https://vi.stackexchange.com/questions/22869/how-can-neovim-on-windows-be-configured-to-use-gitbash-as-the-shell-without-brea
+-- Lazygit was not working without this fix
+if vim.fn.has 'win32' == 1 then
+  vim.o.shell = 'bash.exe'
+  vim.o.shellcmdflag = '-c'
+  vim.o.shellredir = '>%s 2>&1'
+  vim.o.shellquote = ''
+  vim.o.shellxescape = ''
+  -- vim.o.shelltemp = false  -- Uncomment if needed
+  vim.o.shellxquote = ''
+  vim.o.shellpipe = '2>&1| tee'
+  vim.env.TMP = '/tmp' -- Sets the TMP environment variable
+end
+
 -- Allow for cursor to go into empty space in visual block mode
 vim.opt.virtualedit = 'block'
 -- Enable true colors
@@ -79,16 +93,9 @@ vim.opt.smarttab = true
 -- Make sure cursorline is off
 vim.o.cursorline = false
 
--- Fix for shell on Windows. Source: https://vi.stackexchange.com/questions/22869/how-can-neovim-on-windows-be-configured-to-use-gitbash-as-the-shell-without-brea
--- Lazygit was not working without this fix
-if vim.fn.has 'win32' == 1 then
-  vim.o.shell = 'bash.exe'
-  vim.o.shellcmdflag = '-c'
-  vim.o.shellredir = '>%s 2>&1'
-  vim.o.shellquote = ''
-  vim.o.shellxescape = ''
-  -- vim.o.shelltemp = false  -- Uncomment if needed
-  vim.o.shellxquote = ''
-  vim.o.shellpipe = '2>&1| tee'
-  vim.env.TMP = '/tmp' -- Sets the TMP environment variable
-end
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = '*',
+  callback = function()
+    vim.opt_local.formatoptions:remove { 'r', 'o' }
+  end,
+})

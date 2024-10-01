@@ -25,7 +25,6 @@ end, {})
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
-require 'custom.options'
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -215,6 +214,7 @@ vim.api.nvim_set_hl(0, 'TelescopePreviewDirectory', {
   italic = true,
 })
 
+require 'custom.options'
 require 'custom.keymaps'
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

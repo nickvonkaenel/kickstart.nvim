@@ -126,8 +126,6 @@ vim.keymap.set('n', '<A-j>', '<cmd>cnext<CR>')
 vim.keymap.set('n', '<A-k>', '<cmd>cprev<CR>')
 vim.keymap.set('n', '<A-o>', '<cmd>copen<CR>')
 
-vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', { noremap = true, silent = true })
-
 vim.api.nvim_set_keymap('n', '<leader>wt', '<cmd>terminal<CR>', { noremap = true, silent = true }) -- Open terminal with <leader>wt
 
 -- Create an augroup for terminal-related autocommands
@@ -148,3 +146,9 @@ vim.api.nvim_create_autocmd('TermEnter', {
   group = term_group,
   command = 'setlocal signcolumn=no',
 })
+
+-- tried having esc mapped to close mini.files but realized that it breaks multiple cursors which could be useful for file renaming
+
+-- vim.keymap.set('n', '<Esc>', function()
+--   require('mini.files').close()
+-- end, { desc = '[Esc] Close or Escape' })

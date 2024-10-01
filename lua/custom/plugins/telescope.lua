@@ -124,7 +124,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     pcall(require('telescope').load_extension, 'frecency')
 
     -- Setup Telescope File Browser
-    vim.keymap.set('n', '<leader>ee', ':Telescope file_browser<CR>', { desc = 'Fil[E] Brows[E]r', silent = true })
+    vim.keymap.set('n', '<leader>se', ':Telescope file_browser<CR>', { desc = 'File Browser', silent = true })
     vim.keymap.set('n', '<leader>en', ':Nvk<CR>', { desc = '[N]vk-ReaScripts', silent = true })
     vim.keymap.set('n', '<leader>ev', ':Nvim<CR>', { desc = '[N]vim config', silent = true })
 
