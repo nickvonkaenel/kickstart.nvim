@@ -24,7 +24,7 @@ return {
       },
       -- you can enable a preset for easier configuration
       presets = {
-        bottom_search = true, -- use a classic bottom cmdline for search
+        bottom_search = false, -- use a classic bottom cmdline for search
         command_palette = true, -- position the cmdline and popupmenu together
         long_message_to_split = true, -- long messages will be sent to a split
         inc_rename = false, -- enables an input dialog for inc-rename.nvim
@@ -33,7 +33,7 @@ return {
       views = {
         cmdline_popup = {
           position = {
-            row = '25%', -- Positions the popup at 50% of the screen height (vertically centered)
+            row = '40%', -- Positions the popup at 50% of the screen height (vertically centered)
             col = '50%', -- Positions the popup at 50% of the screen width (horizontally centered)
           },
           size = {

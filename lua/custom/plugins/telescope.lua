@@ -50,6 +50,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
       --  All the info you're looking for is in `:help telescope.setup()`
       --
       defaults = {
+        path_display = { 'truncate' },
         wrap_results = false,
         layout_strategy = 'horizontal',
         dynamic_preview_title = true,

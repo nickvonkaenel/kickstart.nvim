@@ -31,7 +31,7 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 vim.api.nvim_set_keymap('n', '<leader>cs', ':Telescope colorscheme<CR>', { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap('n', '<leader>dd', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>k', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true, desc = 'Show diagnostic message' })
 
 -- Toggle transparency
 vim.keymap.set('n', '<leader>wt', function()
@@ -86,7 +86,7 @@ vim.keymap.set('', 'F', function()
 end, { remap = true })
 
 vim.keymap.set('n', '<leader>qa', '<cmd>qa<CR>', { desc = '[Q]uit [A]ll' })
-vim.keymap.set('n', '<leader>qQ', '<cmd>q!<CR>', { desc = '[QQ]uit no save' })
+vim.keymap.set('n', '<leader>qn', '<cmd>q!<CR>', { desc = '[Q]uit [N]o Save' })
 vim.keymap.set('n', '<leader>al', '<cmd>Alpha<CR>', { desc = '[A][L]pha' })
 
 -- Source the current file
