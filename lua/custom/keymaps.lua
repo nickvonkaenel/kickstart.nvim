@@ -34,12 +34,12 @@ vim.api.nvim_set_keymap('n', '<leader>cs', ':Telescope colorscheme<CR>', { norem
 vim.api.nvim_set_keymap('n', '<leader>k', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true, desc = 'Show diagnostic message' })
 
 -- Toggle transparency
-vim.keymap.set('n', '<leader>wt', function()
+vim.keymap.set('n', '<leader>tt', function()
   local theme = require 'onedarkpro.config'
   theme.config.options.transparency = not theme.config.options.transparency
   require('onedarkpro').setup(theme.config.options)
   vim.cmd.colorscheme 'onedark_dark'
-end, { desc = 'Toggle [T]ransparency' })
+end, { desc = '[T]oggle [T]ransparency' })
 
 -- Move selected lines down
 vim.api.nvim_set_keymap('v', 'J', ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
@@ -125,3 +125,26 @@ end, { noremap = true, silent = true })
 vim.keymap.set('n', '<A-j>', '<cmd>cnext<CR>')
 vim.keymap.set('n', '<A-k>', '<cmd>cprev<CR>')
 vim.keymap.set('n', '<A-o>', '<cmd>copen<CR>')
+
+vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', '<leader>wt', '<cmd>terminal<CR>', { noremap = true, silent = true }) -- Open terminal with <leader>wt
+
+-- Create an augroup for terminal-related autocommands
+local term_group = vim.api.nvim_create_augroup('TerminalSettings', { clear = true })
+
+-- Set up autocommands for terminal windows
+vim.api.nvim_create_autocmd('TermOpen', {
+  group = term_group,
+  callback = function()
+    vim.opt_local.number = false
+    vim.opt_local.relativenumber = false
+    vim.opt_local.signcolumn = 'no'
+    vim.cmd 'startinsert'
+  end,
+})
+
+vim.api.nvim_create_autocmd('TermEnter', {
+  group = term_group,
+  command = 'setlocal signcolumn=no',
+})
