@@ -23,6 +23,10 @@ return { -- Collection of various small independent plugins/modules
     require('mini.files').setup {
       windows = {
         preview = true,
+        width_preview = 105,
+      },
+      mappings = {
+        show_help = '<C-/>',
       },
     }
 
