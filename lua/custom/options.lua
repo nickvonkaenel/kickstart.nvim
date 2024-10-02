@@ -93,6 +93,19 @@ vim.opt.smarttab = true
 -- Make sure cursorline is off
 vim.o.cursorline = false
 
+--[[
+c       Auto-wrap comments using textwidth,
+        inserting the current comment
+        leader automatically.
+
+r       Automatically insert the current comment leader after hitting
+        <Enter> in Insert mode.
+
+o       Automatically insert the current comment leader after hitting
+        'o' or 'O' in Normal mode.  In case comment is unwanted
+        in a specific place use CTRL-U to quickly delete
+        it. i_CTRL-U
+]]
 vim.api.nvim_create_autocmd('FileType', {
   pattern = '*',
   callback = function()
