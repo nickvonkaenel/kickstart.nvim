@@ -214,6 +214,12 @@ vim.api.nvim_set_hl(0, 'TelescopePreviewDirectory', {
   italic = true,
 })
 
+-- Make arguments italic
+vim.cmd [[
+  hi! link @parameter TSParameterItalic
+  hi TSParameterItalic gui=italic
+]]
+
 require 'custom.options'
 require 'custom.keymaps'
 -- The line beneath this is called `modeline`. See `:help modeline`

@@ -52,8 +52,8 @@ vim.keymap.set('n', '<leader>+', '<C-a>', { desc = 'Increment number' }) -- incr
 vim.keymap.set('n', '<leader>-', '<C-x>', { desc = 'Decrement number' }) -- decrement
 
 -- window management
-vim.keymap.set('n', '<leader>wl', '<C-w>v', { desc = 'Split Window Vertically' }) -- split window vertically
-vim.keymap.set('n', '<leader>wj', '<C-w>s', { desc = 'Split Window Horizontally' }) -- split window horizontally
+vim.keymap.set('n', '<leader>wv', '<C-w>v', { desc = 'Split Window Vertically' }) -- split window vertically
+vim.keymap.set('n', '<leader>wh', '<C-w>s', { desc = 'Split Window Horizontally' }) -- split window horizontally
 vim.keymap.set('n', '<leader>we', '<C-w>=', { desc = 'Make [W]indow splits [E]qual size' }) -- make split windows equal width & height
 vim.keymap.set('n', '<leader>x', '<cmd>close<CR>', { desc = '[X] Close' }) -- close current split window
 
@@ -73,6 +73,7 @@ vim.keymap.set('n', '<leader>8', '8gt') --  go to eighth tab
 vim.keymap.set('n', '<leader>9', '9gt') --  go to ninth tab
 
 vim.keymap.set('n', '<leader>ww', '<cmd>write<CR>', { desc = '[W]rite [W]ork File' }) -- write current file
+vim.keymap.set('n', '<leader>wa', '<cmd>wa<CR>', { desc = '[W]rite [A]ll' }) -- write all files
 vim.keymap.set('n', '<leader>wq', '<cmd>wq<CR>', { desc = '[W]rite [Q]uit' }) -- write and quit
 vim.keymap.set('n', '<leader>qq', '<cmd>q<CR>', { desc = '[Qq]uit' })
 
@@ -126,7 +127,9 @@ vim.keymap.set('n', '<A-j>', '<cmd>cnext<CR>')
 vim.keymap.set('n', '<A-k>', '<cmd>cprev<CR>')
 vim.keymap.set('n', '<A-o>', '<cmd>copen<CR>')
 
-vim.api.nvim_set_keymap('n', '<leader>wt', '<cmd>terminal<CR>', { noremap = true, silent = true }) -- Open terminal with <leader>wt
+vim.api.nvim_set_keymap('n', '<leader>to', '<cmd>terminal<CR>', { noremap = true, silent = true, desc = '[T]erminal [O]pen' })
+vim.api.nvim_set_keymap('n', '<leader>tv', '<cmd>vsplit | terminal<CR>', { noremap = true, silent = true, desc = '[T]erminal [V]ertical split' })
+vim.api.nvim_set_keymap('n', '<leader>th', '<cmd>split | terminal<CR>', { noremap = true, silent = true, desc = '[T]erminal [H]orizontal split' })
 
 -- Create an augroup for terminal-related autocommands
 local term_group = vim.api.nvim_create_augroup('TerminalSettings', { clear = true })

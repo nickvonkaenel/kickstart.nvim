@@ -67,21 +67,25 @@ return { -- Fuzzy Finder (files, lsp, etc)
             mirror = false,
           },
           width = 0.8,
-          height = 0.5,
+          height = 0.8,
           preview_cutoff = 120,
         },
         file_ignore_patterns = { 'ICONS/', '.git/', 'ICONS\\', '.git\\', '.*shorthand.json' },
         mappings = {
           i = {
+            -- can use <C-w> to delete word so can remap C-u to scroll up
             ['<escape>'] = require('telescope.actions').close,
             ['<C-j>'] = require('telescope.actions').move_selection_next,
             ['<C-k>'] = require('telescope.actions').move_selection_previous,
-            ['<C-u>'] = false,
-            ['<C-f>'] = require('telescope.actions').preview_scrolling_up,
+            ['<C-u>'] = require('telescope.actions').preview_scrolling_up,
             ['<C-c>'] = require('telescope.actions').close,
             ['<C-l>'] = require('telescope.actions').delete_buffer,
             ['<C-Down>'] = require('telescope.actions').cycle_history_next,
             ['<C-Up>'] = require('telescope.actions').cycle_history_prev,
+            ['<C-v>'] = require('telescope.actions').select_vertical,
+            ['<C-h>'] = require('telescope.actions').select_horizontal,
+            ['<C-t>'] = require('telescope.actions').select_tab,
+            ['<C-x>'] = require('telescope.actions').select_all,
           },
           n = {
             ['q'] = require('telescope.actions').close,
