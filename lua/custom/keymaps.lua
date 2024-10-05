@@ -155,3 +155,7 @@ vim.api.nvim_create_autocmd('TermEnter', {
 -- vim.keymap.set('n', '<Esc>', function()
 --   require('mini.files').close()
 -- end, { desc = '[Esc] Close or Escape' })
+
+-- Improve the movement keys with word wrap. Goes to next visible line unless count is set i.e. 3j
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })

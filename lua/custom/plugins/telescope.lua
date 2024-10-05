@@ -130,7 +130,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     -- Setup Telescope File Browser
     vim.keymap.set('n', '<leader>se', ':Telescope file_browser<CR>', { desc = 'File Browser', silent = true })
     vim.keymap.set('n', '<leader>en', ':Nvk<CR>', { desc = '[N]vk-ReaScripts', silent = true })
-    vim.keymap.set('n', '<leader>ev', ':Nvim<CR>', { desc = '[N]vim config', silent = true })
+    vim.keymap.set('n', '<leader>ec', ':Nvim<CR>', { desc = 'Neovim [C]onfig', silent = true })
 
     -- See `:help telescope.builtin`
     local builtin = require 'telescope.builtin'

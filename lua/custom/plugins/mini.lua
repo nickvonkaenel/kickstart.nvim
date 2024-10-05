@@ -61,7 +61,7 @@ return { -- Collection of various small independent plugins/modules
       callback = function(args)
         local buf_id = args.data.buf_id
         -- Tweak keys to your liking
-        map_split(buf_id, '<C-s>', 'belowright horizontal')
+        map_split(buf_id, '<C-h>', 'belowright horizontal')
         map_split(buf_id, '<C-v>', 'belowright vertical')
       end,
     })

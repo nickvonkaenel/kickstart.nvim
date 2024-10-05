@@ -22,5 +22,6 @@ return {
         end,
       },
     }
+    vim.keymap.set('n', '<leader>tr', '<cmd>LspLensToggle<CR>', { desc = '[T]oggle [R]eference Count' })
   end,
 }

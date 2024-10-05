@@ -93,6 +93,8 @@ vim.opt.smarttab = true
 -- Make sure cursorline is off
 vim.o.cursorline = false
 
+vim.o.autoindent = true -- copy indent from current line when starting a new line
+
 --[[
 c       Auto-wrap comments using textwidth,
         inserting the current comment

@@ -3,6 +3,8 @@
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+-- Disable the space keys normal behavior in normal and visual mode
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- Setup path for nvk-ReaScripts
 local is_windows = vim.fn.has 'win32' == 1
