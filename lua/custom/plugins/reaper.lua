@@ -95,6 +95,8 @@ vim.api.nvim_create_user_command('RunActiveReascript', function(opts)
   vim.cmd('Reascript ' .. filepath)
   if open_reaper then
     vim.cmd 'Reaper'
+  elseif vim.g.neovide then
+    vim.cmd 'NeovideFocus' -- Focus Neovide
   end
 end, { nargs = '?' })
 

@@ -92,6 +92,7 @@ vim.keymap.set('n', '<leader>al', '<cmd>Alpha<CR>', { desc = '[A][L]pha' })
 
 -- Source the current file
 vim.keymap.set('n', '<leader>so', function()
+  vim.cmd 'w'
   vim.cmd 'source %'
   vim.notify('Current file sourced', vim.log.levels.INFO)
 end, { desc = '[S][O]urce current file' })
@@ -159,3 +160,25 @@ vim.api.nvim_create_autocmd('TermEnter', {
 -- Improve the movement keys with word wrap. Goes to next visible line unless count is set i.e. 3j
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+local opts = { noremap = true, silent = true }
+
+-- Center screen when scrolling with C-d and C-u
+vim.keymap.set('n', '<C-d>', '<C-d>zz', opts)
+vim.keymap.set('n', '<C-u>', '<C-u>zz', opts)
+
+-- Center screen when scrolling with C-f and C-b
+vim.keymap.set('n', '<C-f>', '<C-f>zz', opts)
+vim.keymap.set('n', '<C-b>', '<C-b>zz', opts)
+
+-- Center screen when going to next/previous match with n and N
+vim.keymap.set('n', 'n', 'nzzzv', opts)
+vim.keymap.set('n', 'N', 'Nzzzv', opts)
+
+-- Save without formatting
+vim.keymap.set('n', '<leader>wn', '<cmd>noautocmd w<CR>', opts)
+
+-- Map Tab to :bnext (next buffer) in normal mode
+vim.api.nvim_set_keymap('n', '<Tab>', ':bnext<CR>', { noremap = true, silent = true })
+-- Map Shift+Tab to :bprev (previous buffer) in normal mode
+vim.api.nvim_set_keymap('n', '<S-Tab>', ':bprev<CR>', { noremap = true, silent = true })
