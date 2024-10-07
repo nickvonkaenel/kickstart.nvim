@@ -33,7 +33,7 @@ return {
       views = {
         cmdline_popup = {
           position = {
-            row = '40%', -- Positions the popup at 50% of the screen height (vertically centered)
+            row = '25%', -- Positions the popup at 50% of the screen height (vertically centered)
             col = '50%', -- Positions the popup at 50% of the screen width (horizontally centered)
           },
           size = {

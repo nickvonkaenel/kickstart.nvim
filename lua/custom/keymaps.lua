@@ -38,7 +38,7 @@ vim.keymap.set('n', '<leader>tt', function()
   local theme = require 'onedarkpro.config'
   theme.config.options.transparency = not theme.config.options.transparency
   require('onedarkpro').setup(theme.config.options)
-  vim.cmd.colorscheme 'onedark_dark'
+  vim.cmd.colorscheme 'onedark'
 end, { desc = '[T]oggle [T]ransparency' })
 
 -- Move selected lines down

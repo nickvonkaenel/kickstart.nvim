@@ -97,11 +97,11 @@ return {
     -- }
     dashboard.section.header.opts.hl = 'String'
 
-    dashboard.section.header.opts.position = 'center'
+    dashboard.section.header.opts.position = 'left'
     dashboard.section.footer.opts.position = 'left'
 
     dashboard.opts.layout = {
-      { type = 'padding', val = 1 },
+      { type = 'padding', val = 2 },
       dashboard.section.header,
       { type = 'padding', val = 2 },
       -- dashboard.section.footer,

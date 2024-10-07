@@ -3,7 +3,7 @@ return {
   config = function()
     require('nvim-highlight-colors').setup {
       enable_tailwind = true,
-      render = 'foreground',
+      render = 'background',
     }
   end,
 }

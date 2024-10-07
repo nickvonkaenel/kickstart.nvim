@@ -2,7 +2,7 @@ if not vim.g.neovide then
   return
 end
 
-vim.o.guifont = 'MesloLGM Nerd Font:h14'
+-- vim.o.guifont = 'MesloLGM Nerd Font:h14'
 
 -- vim.g.neovide_transparency = 0.8
 -- vim.g.neovide_window_blurred = true
