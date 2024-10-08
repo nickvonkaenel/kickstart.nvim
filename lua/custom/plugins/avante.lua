@@ -6,14 +6,14 @@ return {
   opts = {
     -- add any opts here
     hints = {
-      enabled = false,
+      enabled = true,
     },
     windows = {
       position = 'right',
     },
     -- enable auto suggestions
     behavior = {
-      auto_suggestions = true,
+      auto_suggestions = false,
     },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`

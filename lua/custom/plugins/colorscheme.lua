@@ -6,7 +6,7 @@ return { -- You can easily change to a different colorscheme.
   'olimorris/onedarkpro.nvim',
   opts = {
     colors = {
-      bg = '#000000',
+      bg = '#121212',
     },
     options = {
       transparency = true,

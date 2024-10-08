@@ -182,3 +182,12 @@ vim.keymap.set('n', '<leader>wn', '<cmd>noautocmd w<CR>', opts)
 vim.api.nvim_set_keymap('n', '<Tab>', ':bnext<CR>', { noremap = true, silent = true })
 -- Map Shift+Tab to :bprev (previous buffer) in normal mode
 vim.api.nvim_set_keymap('n', '<S-Tab>', ':bprev<CR>', { noremap = true, silent = true })
+
+-- Add TODO comment with current date
+vim.keymap.set('n', '<leader>td', function()
+  local date = os.date '%Y-%m-%d'
+  local todo_comment = string.format('---@TODO:(%s) ', date)
+  vim.cmd 'normal! o'
+  vim.api.nvim_put({ todo_comment }, '', true, true)
+  vim.cmd 'startinsert!'
+end, { noremap = true, silent = true, desc = 'Insert TODO comment' })
