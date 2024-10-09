@@ -184,3 +184,5 @@ vim.api.nvim_set_keymap('n', '<Tab>', ':bnext<CR>', { noremap = true, silent = t
 vim.api.nvim_set_keymap('n', '<S-Tab>', ':bprev<CR>', { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap('n', '<leader>td', [[o-- TODO: ]], { noremap = true, silent = true })
+
+vim.keymap.set('n', '<leader>z', '<cmd>NoNeckPain<CR>', { desc = '[Z]en Mode' })
