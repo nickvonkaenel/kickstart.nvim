@@ -13,7 +13,7 @@ end, { nargs = 1 })
 vim.api.nvim_create_user_command('RunActiveReascript', function(opts)
   local open_reaper = opts.args == 'open'
   local ext = vim.fn.expand '%:e'
-  local filepath = vim.fn.expand '%:p'
+  local filepath = vim.fn.expand('%:p'):gsub('\\', '/')
   if not filepath:find 'REAPER' then
     vim.notify('Reascript command only supports ReaScript files', vim.log.levels.ERROR)
     return

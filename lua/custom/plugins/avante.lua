@@ -6,7 +6,7 @@ return {
   opts = {
     -- add any opts here
     hints = {
-      enabled = true,
+      enabled = false, -- annoying hints in visual mode
     },
     windows = {
       position = 'right',
