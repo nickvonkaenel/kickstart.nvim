@@ -232,18 +232,10 @@ vim.cmd [[
   hi TSParameterItalic gui=italic
 ]]
 
-local misc_augroup = vim.api.nvim_create_augroup('Miscellaneous', { clear = true })
-
-vim.api.nvim_create_autocmd('BufReadPost', {
-  desc = 'Open file at the last position it was edited earlier',
-  group = misc_augroup,
-  pattern = '*',
-  command = 'silent! normal! g`"zv',
-})
-
 require 'custom.options'
 require 'custom.keymaps'
 require 'custom.neovide'
+require 'custom.autocmds'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

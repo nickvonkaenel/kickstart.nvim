@@ -129,25 +129,6 @@ vim.api.nvim_set_keymap('n', '<leader>to', '<cmd>terminal<CR>', { noremap = true
 vim.api.nvim_set_keymap('n', '<leader>tv', '<cmd>vsplit | terminal<CR>', { noremap = true, silent = true, desc = '[T]erminal [V]ertical split' })
 vim.api.nvim_set_keymap('n', '<leader>th', '<cmd>split | terminal<CR>', { noremap = true, silent = true, desc = '[T]erminal [H]orizontal split' })
 
--- Create an augroup for terminal-related autocommands
-local term_group = vim.api.nvim_create_augroup('TerminalSettings', { clear = true })
-
--- Set up autocommands for terminal windows
-vim.api.nvim_create_autocmd('TermOpen', {
-  group = term_group,
-  callback = function()
-    vim.opt_local.number = false
-    vim.opt_local.relativenumber = false
-    vim.opt_local.signcolumn = 'no'
-    vim.cmd 'startinsert'
-  end,
-})
-
-vim.api.nvim_create_autocmd('TermEnter', {
-  group = term_group,
-  command = 'setlocal signcolumn=no',
-})
-
 -- tried having esc mapped to close mini.files but realized that it breaks multiple cursors which could be useful for file renaming
 
 -- vim.keymap.set('n', '<Esc>', function()
