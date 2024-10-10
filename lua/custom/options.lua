@@ -122,3 +122,5 @@ vim.api.nvim_create_autocmd('FileType', {
 -- LSP, treesitter and other ft plugins will be disabled.
 -- mini.animate will also be disabled.
 vim.g.bigfile_size = 1024 * 1024 * 1.5 -- 1.5 MB
+
+vim.o.guifont = 'MesloLGM Nerd Font:h14' -- for gui like Neovide and Nvy
