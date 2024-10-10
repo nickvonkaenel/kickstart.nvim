@@ -31,9 +31,12 @@ return { -- Collection of various small independent plugins/modules
     }
 
     local minifiles_toggle = function(...)
-      if not MiniFiles.close() then
-        MiniFiles.open(...)
+      if MiniFiles.close() then
+        return
       end
+      MiniFiles.open(vim.api.nvim_buf_get_name(0), false)
+      -- open with current file focused
+      MiniFiles.reveal_cwd()
     end
     vim.keymap.set('n', '<leader>f', minifiles_toggle, { desc = '[F]iles' })
     vim.api.nvim_set_hl(0, 'MiniFilesCursorLine', { link = 'NONE' }) -- remove cursorline highlight

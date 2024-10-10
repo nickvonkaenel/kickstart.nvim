@@ -165,6 +165,7 @@ vim.api.nvim_set_keymap('n', '<leader>td', [[o-- TODO: ]], { noremap = true, sil
 
 vim.keymap.set('n', '<leader>z', '<cmd>NoNeckPain<CR>', { desc = '[Z]en Mode' })
 
+-- dial.nvim
 local augend = require 'dial.augend'
 require('dial.config').augends:on_filetype {
   typescript = {
