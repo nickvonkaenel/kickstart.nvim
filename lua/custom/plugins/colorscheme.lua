@@ -9,8 +9,8 @@ return { -- You can easily change to a different colorscheme.
       bg = '#121212',
     },
     options = {
-      transparency = true,
-      lualine_transparency = true,
+      -- transparency = true,
+      -- lualine_transparency = true,
       cursorline = false,
     },
   },

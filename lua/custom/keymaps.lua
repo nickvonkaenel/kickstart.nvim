@@ -47,9 +47,6 @@ vim.api.nvim_set_keymap('v', 'J', ":m '>+1<CR>gv=gv", { noremap = true, silent =
 -- Move selected lines up
 vim.api.nvim_set_keymap('v', 'K', ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
 vim.keymap.set('i', 'jk', '<ESC>', { noremap = true, silent = true, desc = 'Exit insert mode with jk' })
--- increment/decrement numbers
-vim.keymap.set('n', '<leader>+', '<C-a>', { desc = 'Increment number' }) -- increment
-vim.keymap.set('n', '<leader>-', '<C-x>', { desc = 'Decrement number' }) -- decrement
 
 -- window management
 vim.keymap.set('n', '<leader>wv', '<C-w>v', { desc = 'Split Window Vertically' }) -- split window vertically
@@ -186,3 +183,56 @@ vim.api.nvim_set_keymap('n', '<S-Tab>', ':bprev<CR>', { noremap = true, silent =
 vim.api.nvim_set_keymap('n', '<leader>td', [[o-- TODO: ]], { noremap = true, silent = true })
 
 vim.keymap.set('n', '<leader>z', '<cmd>NoNeckPain<CR>', { desc = '[Z]en Mode' })
+
+local augend = require 'dial.augend'
+require('dial.config').augends:on_filetype {
+  typescript = {
+    augend.integer.alias.decimal,
+    augend.integer.alias.hex,
+    augend.constant.new { elements = { 'true', 'false' } },
+    augend.constant.new { elements = { 'let', 'const' } },
+  },
+  lua = {
+    augend.integer.alias.decimal,
+    -- augend.paren.alias.brackets,
+    augend.constant.new { elements = { 'true', 'false' } },
+    augend.constant.new { elements = { 'or', 'and', 'not' } },
+  },
+  markdown = {
+    augend.integer.alias.decimal,
+    augend.misc.alias.markdown_header,
+    augend.constant.new { elements = { '- [ ]', '- [x]' }, word = false }, -- This pattern will match a checkbox at the start of the line},
+  },
+}
+vim.keymap.set('n', '<C-a>', function()
+  require('dial.map').manipulate('increment', 'normal')
+end)
+vim.keymap.set('n', '<C-x>', function()
+  require('dial.map').manipulate('decrement', 'normal')
+end)
+vim.keymap.set('n', 'g<C-a>', function()
+  require('dial.map').manipulate('increment', 'gnormal')
+end)
+vim.keymap.set('n', 'g<C-x>', function()
+  require('dial.map').manipulate('decrement', 'gnormal')
+end)
+vim.keymap.set('v', '<C-a>', function()
+  require('dial.map').manipulate('increment', 'visual')
+end)
+vim.keymap.set('v', '<C-x>', function()
+  require('dial.map').manipulate('decrement', 'visual')
+end)
+vim.keymap.set('v', 'g<C-a>', function()
+  require('dial.map').manipulate('increment', 'gvisual')
+end)
+vim.keymap.set('v', 'g<C-x>', function()
+  require('dial.map').manipulate('decrement', 'gvisual')
+end)
+
+-- only yank lines if they aren't empty
+vim.keymap.set('n', 'dd', function()
+  if vim.fn.getline '.' == '' then
+    return '"_dd'
+  end
+  return 'dd'
+end, { expr = true })

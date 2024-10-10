@@ -219,11 +219,27 @@ vim.api.nvim_set_hl(0, 'TelescopePreviewDirectory', {
   italic = true,
 })
 
+vim.api.nvim_set_hl(0, '@markup.list.checked', { bg = 'NONE', fg = '#abb2bf' }) -- markdown checkboxes when focused
+
+vim.api.nvim_set_hl(0, 'TelescopeBorder', { bg = '#121212', fg = '#5c6370' }) -- telescope border
+vim.api.nvim_set_hl(0, 'FloatBorder', { bg = '#121212', fg = '#5c6370' }) -- mini.files border and other floats
+vim.api.nvim_set_hl(0, 'NormalFloat', { bg = '#121212' }) -- mini.files border and other floats
+vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg = '#121212', fg = '#abb2bf' }) -- telescope border
+
 -- Make arguments italic
 vim.cmd [[
   hi! link @parameter TSParameterItalic
   hi TSParameterItalic gui=italic
 ]]
+
+local misc_augroup = vim.api.nvim_create_augroup('Miscellaneous', { clear = true })
+
+vim.api.nvim_create_autocmd('BufReadPost', {
+  desc = 'Open file at the last position it was edited earlier',
+  group = misc_augroup,
+  pattern = '*',
+  command = 'silent! normal! g`"zv',
+})
 
 require 'custom.options'
 require 'custom.keymaps'
